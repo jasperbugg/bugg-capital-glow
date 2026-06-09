@@ -128,8 +128,8 @@
     border: 1px solid var(--primary);
   }
   .btn-primary:hover {
-    background: oklch(0.56 0.18 252);
-    border-color: oklch(0.56 0.18 252);
+    background: #1a63bc;
+    border-color: #1a63bc;
   }
   .btn-ghost {
     display: inline-flex;
