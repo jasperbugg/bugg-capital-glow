@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UwInzichtRouteImport } from './routes/uw-inzicht'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as InvestmentsRouteImport } from './routes/investments'
@@ -17,6 +18,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CasussenRouteImport } from './routes/casussen'
 import { Route as IndexRouteImport } from './routes/index'
 
+const UwInzichtRoute = UwInzichtRouteImport.update({
+  id: '/uw-inzicht',
+  path: '/uw-inzicht',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uw-inzicht': typeof UwInzichtRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uw-inzicht': typeof UwInzichtRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/uw-inzicht': typeof UwInzichtRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
+    | '/uw-inzicht'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
+    | '/uw-inzicht'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
+    | '/uw-inzicht'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,10 +131,18 @@ export interface RootRouteChildren {
   InvestmentsRoute: typeof InvestmentsRoute
   OverOnsRoute: typeof OverOnsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UwInzichtRoute: typeof UwInzichtRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/uw-inzicht': {
+      id: '/uw-inzicht'
+      path: '/uw-inzicht'
+      fullPath: '/uw-inzicht'
+      preLoaderRoute: typeof UwInzichtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -183,7 +203,18 @@ const rootRouteChildren: RootRouteChildren = {
   InvestmentsRoute: InvestmentsRoute,
   OverOnsRoute: OverOnsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UwInzichtRoute: UwInzichtRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
