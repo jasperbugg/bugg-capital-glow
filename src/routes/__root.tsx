@@ -77,14 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "BUGG Capital — Co-ownership in Belgisch short-stay vastgoed" },
+      { name: "description", content: "Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen, eigen capital erin. Sinds 2012." },
+      { name: "author", content: "BUGG Capital" },
+      { property: "og:title", content: "BUGG Capital — Co-ownership in Belgisch short-stay vastgoed" },
+      { property: "og:description", content: "Lacuna & Lama: twee co-ownership fondsen in Belgisch short-stay vastgoed. Doe mee. Investeer samen met de founders." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
