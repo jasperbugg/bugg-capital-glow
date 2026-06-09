@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Linkedin } from "lucide-react";
+import { ArrowRight, Linkedin, Quote } from "lucide-react";
 
 export const Route = createFileRoute("/over-ons")({
   head: () => ({
     meta: [
       { title: "Over BUGG Capital — Platform builders. Vastgoedfondsen." },
-      { name: "description", content: "Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen, eigen capital erin. Opgericht 2012." },
+      { name: "description", content: "Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen, founders investeren mee. Opgericht 2012." },
       { property: "og:title", content: "Over BUGG Capital — Platform builders. Vastgoedfondsen." },
       { property: "og:description", content: "Founders die zelf mee investeren. Sinds 2012 actief in platform building en vastgoedfondsen." },
     ],
@@ -14,25 +14,30 @@ export const Route = createFileRoute("/over-ons")({
 });
 
 const team = [
-  { initials: "JS", name: "Jasper Schrijver", role: "Managing Partner · Founder", bio: "Founder van BUGG Capital. Achtergrond in venture building en platform-industrie — van social platforms tot e-commerce. Bouwde Specialstays van nul tot volledig operating platform in het grensgebied NL–BE. Beheert Lacuna (2024) en Lama (2026).", linkedin: "https://www.linkedin.com/in/jschrijver/" },
-  { initials: "SB", name: "Stef van Boekel", role: "Commercieel Partner", bio: "Oprichter van Marketplace Distri — top-10 Europese Amazon-distributeur actief in 20+ landen. Sterke commerciële achtergrond en netwerk in de regio. Bij BUGG verantwoordelijk voor investor relations, dealflow en lokale partnerships.", linkedin: "https://www.linkedin.com/in/stefvanboekel/" },
-  { initials: "MH", name: "Merel Habets", role: "Head of Operations", bio: "Verantwoordelijk voor de dagelijkse operaties van het Specialstays platform. Bridging people, processes en continue verbetering. Actief vanuit Limburg met een achtergrond in internationale omgevingen.", linkedin: "https://www.linkedin.com/in/merel-habets-sultsing-56a99a43/" },
+  {
+    initials: "JS", name: "Jasper Schrijver", role: "Managing Partner · Founder",
+    bio: "Founder van BUGG Capital. Bouwt al sinds 2010 platforms — van social (Fangage, actief op Meta, Instagram, YouTube, Spotify) tot e-commerce (Colengo, SvB Group). De naam BUGG komt voort uit het ondernemersleven zelf: een bug in het systeem. Een onverwachte fout die, mits goed gespot, een ongekende kans wordt. Jasper zag die kans in de short-stay markt en bouwde Specialstays van nul tot volledig operating platform in het grensgebied NL–BE.",
+    linkedin: "https://www.linkedin.com/in/jschrijver/",
+  },
+  {
+    initials: "SB", name: "Stef van Boekel", role: "Commercieel Partner",
+    bio: "15+ jaar ervaring op het hoogste niveau binnen de platform-industrie — aan zowel platform- als leverancierskant. Oprichter van Marketplace Distri (top-10 Europese Amazon-distributeur, actief in 20+ landen) en heeft honderden bedrijven ondersteund om succes te bereiken op de grote platformen. Bekend van BNR, Het Financieele Dagblad en MTSprout. Bij BUGG verantwoordelijk voor investor relations, dealflow en lokale partnerships.",
+    linkedin: "https://www.linkedin.com/in/stefvanboekel/",
+  },
+  {
+    initials: "MH", name: "Merel Habets", role: "Head of Operations",
+    bio: "Verantwoordelijk voor de dagelijkse operaties van het Specialstays platform. Bridging people, processes en continue verbetering. Actief vanuit Limburg met een achtergrond in internationale omgevingen.",
+    linkedin: "https://www.linkedin.com/in/merel-habets-sultsing-56a99a43/",
+  },
 ];
 
 const partners = [
-  { name: "Van Casimir", role: "Legal & Tax · Vastgoedrecht BE/NL", body: "Grensoverschrijdende structurering, fondsrecht en fiscaliteit NL–BE." },
-  { name: "Delta Notaris", role: "Notariaat · Belgisch Limburg", body: "Vaste notariële partner voor acquisities in het grensgebied." },
-  { name: "Baat", role: "Accounting · Fondsadministratie", body: "Fondsadministratie, rapportage en periodieke investor updates." },
-  { name: "BNP Paribas", role: "Banking · Structurering & financiering", body: "Bankpartner voor financieringsstructuren en hypotheken." },
-  { name: "Vlaamse Participatiemaatschappij", role: "Participatie & advies", body: "Betrokken als adviseur bij fondsstructurering in Belgisch Limburg." },
-  { name: "Specialstays", role: "Operating platform · Eigen ontwikkeling", body: "Het operating systeem dat BUGG zelf bouwde. 70% bezetting, 8.8 review." },
-];
-
-const edge = [
-  ["Platform-DNA", "Wij begrijpen hoe de grote OTA-platformen werken — en hoe je ze verslaat. Systemen, geen spreadsheets."],
-  ["Cross-border arbitrage", "Inkopen in België. Verhuren aan Nederland. Die prijsverschillen zijn structureel en reproduceerbaar."],
-  ["Aligned incentives", "Wij beleggen altijd zelf mee. Iedereen in dezelfde positie — founders en investeerders gelijk."],
-  ["Bewezen track record", "Actief since 2012. Van Groupon tot Airbnb — wij hebben de hele cyclus doorgemaakt."],
+  { name: "Van Casimir", role: "Legal & Tax · Vastgoedrecht BE/NL", quote: "Met BUGG denk je niet meer in deals, maar in structuur. Dat tilt elk dossier naar een hoger niveau.", who: "Mr. T. van Casimir" },
+  { name: "Delta Notaris", role: "Notariaat · Belgisch Limburg", quote: "Een opdrachtgever die snel beslist én weet wat hij wil — dat scheelt iedereen in de keten tijd en energie.", who: "Notaris-partner" },
+  { name: "Baat Accountants", role: "Accounting · Fondsadministratie", quote: "De fondsadministratie loopt strak. Rapportages helder, rendementen helder, communicatie helder.", who: "Relatiebeheerder" },
+  { name: "Schildersbedrijf Heuvelland", role: "Lokale uitvoeringspartner", quote: "Wij krijgen ruimte om kwaliteit te leveren in plaats van de laagste prijs. Dat is in deze tijd zeldzaam.", who: "Eigenaar" },
+  { name: "Specialstays", role: "Operating platform · Eigen ontwikkeling", quote: "Vastgoed plus platform-DNA. Dat is waarom dezelfde panden bij ons 70% bezetting halen.", who: "Operations" },
+  { name: "Vlaamse Participatiemaatschappij", role: "Participatie & advies", quote: "Een grensoverschrijdende speler die de Vlaamse markt serieus neemt en lokaal investeert.", who: "Adviseur" },
 ];
 
 function OverOns() {
@@ -53,53 +58,115 @@ function OverOns() {
         </div>
       </section>
 
+      {/* VISIE */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 grid md:grid-cols-2 gap-12">
           <div>
-            <div className="eyebrow">Het verhaal</div>
+            <div className="eyebrow">Visie</div>
             <h2 className="mt-6 text-4xl md:text-5xl font-bold">
-              Platform bouwen.<br /><span className="italic-accent">Samen investeren.</span>
+              De kans in een<br /><span className="italic-accent">versnipperde markt.</span>
             </h2>
           </div>
           <div className="space-y-5 text-muted-foreground leading-relaxed">
-            <p>BUGG heeft een lange historie van venture building in de platform-industrie. Van social platforms zoals Fangage (actief op Meta, Instagram, YouTube, Spotify) tot e-commerce platforms met Amazon- en Groupon-DNA via Colengo en SvB Group.</p>
-            <p>Die platform-kennis is nu gericht op de OTA-markt. Wij begrijpen hoe Airbnb, Booking.com, VRBO en Expedia werken — en hoe je het spel daar wint. Het product is vastgoed. Het operating systeem is Specialstays.</p>
-            <p>Externe fondsen beheren we sinds 2024. Lacuna als eerste, Lama in 2026. Focus: grensgebied NL–BE, premium short-stay, platform-gedreven rendement.</p>
-            <blockquote className="border-l-2 border-primary pl-6 text-foreground italic mt-8">
-              "Wij begrijpen platforms. Van Amazon en Groupon tot social media — we hebben altijd het spel op de grote platformen gespeeld. Nu doen we dat op Airbnb en Booking.com, met vastgoed als product."
-            </blockquote>
+            <p>
+              De short-term rental markt is groot, maar nog grotendeels onontgonnen. 95% van de aanbieders bezit één woning, heeft geen kennis of expertise, en geen budget voor professionele tools. Dat is precies waar wij actief zijn.
+            </p>
+            <p>
+              Het grensgebied NL–BE biedt structureel arbitrage. De Nederlandse portemonnee trekt richting België — premium betalingsbereidheid op een Belgische kostenbasis. De vastgoedprijzen in België blijven achter bij Nederland, terwijl de inhaalslag al begonnen is.
+            </p>
+            <p>
+              Wij combineren platform-kennis met lokale uitvoering. Specialstays als operating systeem. BUGG Capital als investment holding. Twee fondsen actief, een derde in pre-launch.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
-          {[
-            ["Opgericht", "2012", "Nederland"],
-            ["Actief in", "NL · BE", "Cross-border"],
-            ["Platform", "Specialstays", "70% bezetting · 8.8/10"],
-            ["Investment mandate", "€50M", "€7M gecommitteerd"],
-          ].map(([label, big, sub]) => (
-            <div key={label} className="bg-background p-8">
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
-              <div className="mt-3 text-2xl font-bold">{big}</div>
-              <div className="mt-1 text-xs text-muted-foreground">{sub}</div>
-            </div>
-          ))}
+      {/* MISSIE */}
+      <section className="border-b border-border bg-surface/30">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 grid md:grid-cols-2 gap-12">
+          <div>
+            <div className="eyebrow">Missie</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold">
+              Lokaal werken.<br /><span className="italic-accent">Samen bouwen.</span>
+            </h2>
+          </div>
+          <div className="space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              Wij werken met vaste lokale partners — accountants, notarissen, schildersbedrijven, installateurs. De lokale economie groeit mee. Niemand wordt op laagste prijs uitgeknepen; we kiezen op kwaliteit en lange relatie.
+            </p>
+            <p>
+              Investeren in vastgoed maken we zichtbaar. Geen black box, geen onleesbare rapportages. Inzicht in de panden, de cijfers, de gasten, de plannen.
+            </p>
+            <p>
+              En we investeren altijd zelf mee. Wat de co-owners doen, doen wij. Iedereen in dezelfde positie.
+            </p>
+          </div>
         </div>
       </section>
 
+      {/* PARTNERS & QUOTES */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <div className="eyebrow">Onze partners</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-bold">
+                Lokaal netwerk.<br /><span className="italic-accent">Vaste gezichten.</span>
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              BUGG werkt met een vast netwerk van juridische, fiscale, operationele en uitvoerende partners in het grensgebied NL–BE. Hieronder een aantal van hun woorden over de samenwerking.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+            {partners.map((p) => (
+              <div key={p.name} className="bg-background p-8 flex flex-col">
+                <Quote size={18} className="text-primary mb-4" />
+                <p className="text-sm text-foreground leading-relaxed italic">"{p.quote}"</p>
+                <div className="mt-auto pt-6 border-t border-border">
+                  <h3 className="text-base font-semibold">{p.name}</h3>
+                  <div className="text-xs uppercase tracking-widest text-primary mt-1">{p.role}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{p.who}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* COMPOUNDEN */}
+      <section className="border-b border-border bg-surface/30">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="eyebrow">Compounden</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold">
+              Wij investeren<br /><span className="italic-accent">altijd zelf mee.</span>
+            </h2>
+          </div>
+          <div className="space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              Elke euro die uit de panden komt, gaat terug het systeem in. Nieuwe panden, betere techniek, slimmere distributie. Zo compoundt het rendement — niet alleen op de balans, ook in de exploitatie.
+            </p>
+            <p>
+              Founders investeren altijd zelf in elk fonds. Niet symbolisch — substantieel. Onze belangen zijn structureel gelijk aan die van onze co-owners. Altijd.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
               <div className="eyebrow">Het team</div>
               <h2 className="mt-6 text-4xl md:text-5xl font-bold">
-                Founders die<br /><span className="italic-accent">zelf mee investeren.</span>
+                Twee werelden.<br /><span className="italic-accent">Eén onderneming.</span>
               </h2>
             </div>
             <p className="text-muted-foreground self-end leading-relaxed">
-              Het team investeert zelf mee in elk fonds. Onze belangen zijn structureel gelijk aan die van onze investeerders — altijd.
+              Jasper bouwde de platforms — die kant van het spel kent hij. Stef heeft 15+ jaar ervaring aan de leverancierskant van platforms en heeft honderden bedrijven succesvol op die platforms gebracht. Samen herkenden ze de kans in short-stay: de platforms zijn er, maar de kennis ontbreekt op de plek waar het geld verdiend wordt.
             </p>
           </div>
 
@@ -118,43 +185,48 @@ function OverOns() {
               </div>
             ))}
           </div>
+
+          <div className="mt-10 panel p-6 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <span className="text-xs uppercase tracking-widest text-primary">Bekend van</span>
+            <span>BNR Nieuwsradio</span>
+            <span>Het Financieele Dagblad</span>
+            <span>MT/Sprout</span>
+          </div>
         </div>
       </section>
 
+      {/* TIJDLIJN */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
-              <div className="eyebrow">Structuur & partners</div>
+              <div className="eyebrow">De route</div>
               <h2 className="mt-6 text-4xl md:text-5xl font-bold">
-                Gebouwd om<br /><span className="italic-accent">te schalen.</span>
+                Van 2012<br /><span className="italic-accent">tot nu.</span>
               </h2>
             </div>
             <p className="text-muted-foreground self-end leading-relaxed">
-              BUGG werkt met een vast netwerk van juridische, fiscale en operationele partners in het grensgebied NL–BE. Elke deal wordt ondersteund door gespecialiseerde adviseurs — van acquisitie tot notaris tot asset management.
+              Elk bedrijf was een platform. Elk platform leerde ons iets nieuws. Specialstays is het eindpunt van die route — en het operating systeem achter de fondsen.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-            {partners.map((p) => (
-              <div key={p.name} className="bg-background p-8">
-                <h3 className="text-lg font-semibold">{p.name}</h3>
-                <div className="text-xs uppercase tracking-widest text-primary mt-1">{p.role}</div>
-                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
-          <div className="eyebrow mb-12">Onze edge</div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-            {edge.map(([t, b]) => (
-              <div key={t} className="bg-background p-8">
-                <h3 className="text-lg font-semibold">{t}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b}</p>
+          <div className="space-y-6">
+            {[
+              { p: "2012 – 2014", n: "SvB Group Holding", b: "Innovatieve e-commerce holding gericht op technologie en klantfocus. Distributie via de grote retail- en e-tail platformen.", s: "Exit 2014" },
+              { p: "2011 – 2019", n: "Colengo", b: "Specialisatie in maatwerkoplossingen voor e-tail en retail. Technologie en processen voor maximale distributie.", s: "Exit 2019" },
+              { p: "2016 – 2020", n: "Fangage by Triller", b: "Social platform waarmee artiesten hun fans bereikten en activeerden — actief op alle grote creator-platformen.", s: "Exit 2020" },
+              { p: "2019 – Actief", n: "Specialstays", b: "Operating platform voor short-stay verhuur — pricing, gasten, kwaliteit, distributie op 100+ kanalen. De motor achter Lacuna en Lama.", s: "Actief" },
+              { p: "2024 – Actief", n: "Lacuna & Lama Funds", b: "Eerste externe fondsen onder BUGG Capital. Co-ownership in short-stay vastgoed in het grensgebied NL–BE.", s: "Actief" },
+            ].map((v) => (
+              <div key={v.n} className="panel p-8 grid md:grid-cols-4 gap-6">
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">{v.p}</div>
+                  <div className="mt-2 text-xs text-primary uppercase tracking-widest">{v.s}</div>
+                </div>
+                <div className="md:col-span-3">
+                  <h3 className="text-2xl font-semibold">{v.n}</h3>
+                  <p className="mt-3 text-muted-foreground leading-relaxed">{v.b}</p>
+                </div>
               </div>
             ))}
           </div>
