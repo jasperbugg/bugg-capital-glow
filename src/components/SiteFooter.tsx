@@ -5,8 +5,11 @@ export function SiteFooter() {
     <footer className="border-t border-border mt-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="font-bold text-lg tracking-tight">
-            BUGG<span className="text-primary">.</span>Capital
+          <div className="flex items-baseline gap-2">
+            <span className="text-3xl font-semibold tracking-tight lowercase">
+              bugg<span className="text-primary">.</span>
+            </span>
+            <span className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Capital</span>
           </div>
           <p className="mt-4 text-sm text-muted-foreground max-w-sm">
             Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen,

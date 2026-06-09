@@ -17,8 +17,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
-        <Link to="/" className="font-bold tracking-tight text-lg">
-          BUGG<span className="text-primary">.</span>
+        <Link to="/" className="flex items-baseline gap-2 group" aria-label="BUGG Capital home">
+          <span className="text-2xl font-semibold tracking-tight leading-none text-foreground lowercase">
+            bugg<span className="text-primary">.</span>
+          </span>
+          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.22em] text-muted-foreground translate-y-[-2px]">
+            Capital
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm">
