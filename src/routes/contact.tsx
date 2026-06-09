@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Heart, Instagram, Linkedin, Mail, MapPin, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -148,6 +148,55 @@ function Contact() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INSTAGRAM FEED */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <div className="eyebrow">Volg ons</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-bold">
+                Wat we<br /><span className="italic-accent">vandaag doen.</span>
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              Achter de schermen bij BUGG en Specialstays — nieuwe panden, transformaties, events en het team.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+            {[
+              { i: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=70", c: "The Windmill — renovatie week 12" },
+              { i: "https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?w=600&q=70", c: "C50 Ignis — nieuwe foto's" },
+              { i: "https://cdn-cms.bookingexperts.com/media/3743/31/optimized.jpg", c: "Villa Grimbia · oplevering" },
+              { i: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=70", c: "Salpstraat · gast review 9.4" },
+              { i: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=70", c: "Team-bezoek Belgisch Limburg" },
+              { i: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&q=70", c: "Pijplijn-tour mei" },
+            ].map((p, idx) => (
+              <a key={idx} href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="group relative block aspect-square overflow-hidden">
+                <img src={p.i} alt={p.c} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                <div className="absolute inset-0 bg-background/85 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-center">
+                  <Instagram size={20} className="text-primary" />
+                  <p className="mt-3 text-xs text-foreground leading-snug">{p.c}</p>
+                  <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
+                    <span className="inline-flex items-center gap-1"><Heart size={12} /> 124</span>
+                    <span className="inline-flex items-center gap-1"><MessageCircle size={12} /> 12</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="btn-primary">
+              <Instagram size={16} /> @buggcapital op Instagram
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost">
+              <Linkedin size={16} /> LinkedIn
+            </a>
           </div>
         </div>
       </section>
