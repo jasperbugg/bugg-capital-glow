@@ -54,7 +54,8 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm">
             <li><Link to="/over-ons" className="hover:text-primary">{t("Over ons", "About")}</Link></li>
             <li><Link to="/fondsen" className="hover:text-primary">{t("Fondsen", "Funds")}</Link></li>
-            <li><Link to="/casussen" className="hover:text-primary">{t("Portefeuille", "Portfolio")}</Link></li>
+            <li><Link to="/fondsen/lacuna" className="hover:text-primary pl-3 text-muted-foreground">— Lacuna</Link></li>
+            <li><Link to="/fondsen/lama" className="hover:text-primary pl-3 text-muted-foreground">— Lama</Link></li>
             <li><Link to="/investments" className="hover:text-primary">Investments</Link></li>
             <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
           </ul>

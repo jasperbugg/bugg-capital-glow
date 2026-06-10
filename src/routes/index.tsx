@@ -252,8 +252,8 @@ function Home() {
                 {t("Download whitepaper", "Download whitepaper")}
               </button>
             </div>
-            <Link to="/casussen" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
-              {t("Bekijk de portefeuille", "View portfolio")} →
+            <Link to="/fondsen" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
+              {t("Bekijk de fondsen", "View our funds")} →
             </Link>
           </div>
         </div>
