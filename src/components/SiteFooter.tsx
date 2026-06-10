@@ -1,16 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { Linkedin, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import buggLogoWhite from "@/assets/bugg-logo-white.png.asset.json";
+import buggLogoBlue from "@/assets/bugg-logo-blue.png.asset.json";
 
 export function SiteFooter() {
   const { t } = useLanguage();
   return (
-    <footer className="border-t border-border mt-32">
+    <footer className="border-t border-border mt-32 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={buggLogoWhite.url} alt="BUGG" className="h-8 w-auto" />
+            <img src={buggLogoBlue.url} alt="BUGG" className="h-8 w-auto" />
           </div>
 
           <p className="mt-4 text-sm text-muted-foreground max-w-sm">

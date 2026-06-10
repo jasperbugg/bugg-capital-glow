@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
-import buggLogoWhite from "@/assets/bugg-logo-white.png.asset.json";
+import buggLogoBlue from "@/assets/bugg-logo-blue.png.asset.json";
 
 const TYPEFORM_CALL_ID = "YOUR_TYPEFORM_ID_2";
 
@@ -13,10 +13,10 @@ export function SiteHeader() {
   const { t } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
+    <header className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: "rgba(20,80,153,0.1)" }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 group" aria-label="BUGG home">
-          <img src={buggLogoWhite.url} alt="BUGG" className="h-6 w-auto" />
+          <img src={buggLogoBlue.url} alt="BUGG" className="h-6 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7 text-sm">
