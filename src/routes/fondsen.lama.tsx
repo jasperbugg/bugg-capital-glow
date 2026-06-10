@@ -78,7 +78,7 @@ function LamaPage() {
   return (
     <main className="bg-background text-foreground">
       {/* HERO */}
-      <section className="border-b border-border bugg-grid bugg-grid-fade">
+      <section className="section-blue border-b border-border bugg-grid bugg-grid-fade">
         <div className="container mx-auto px-6 py-24 md:py-32">
           <div className="eyebrow">Lama Fund · Freehold</div>
           <h1 className="mt-6 text-5xl md:text-7xl font-semibold leading-[1.05] tracking-tight max-w-4xl">

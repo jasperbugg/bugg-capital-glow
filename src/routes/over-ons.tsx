@@ -38,7 +38,7 @@ const edge = [
 function OverOns() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border">
+      <section className="section-blue relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bugg-grid bugg-grid-fade" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
           <div className="eyebrow">Over BUGG</div>
