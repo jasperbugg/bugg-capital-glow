@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/investments")({
   head: () => ({
@@ -49,7 +50,6 @@ function Investments() {
   return (
     <>
       <section className="section-blue relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bugg-grid bugg-grid-fade" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
           <div className="eyebrow">Investments</div>
           <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05]">
@@ -121,6 +121,30 @@ function Investments() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-blue border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="eyebrow">Built to compound</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+              Die route leidt<br /><span className="italic-accent">naar de fondsen.</span>
+            </h2>
+          </div>
+          <div>
+            <p className="text-muted-foreground leading-relaxed">
+              Alles wat wij leerden over platformen, data en distributie zetten wij nu in voor onze investeerders. Lacuna en Lama zijn het resultaat.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/fondsen" className="btn-primary">
+                Bekijk de fondsen <ArrowRight size={16} />
+              </Link>
+              <Link to="/contact" className="btn-ghost">
+                Contact opnemen
+              </Link>
+            </div>
           </div>
         </div>
       </section>

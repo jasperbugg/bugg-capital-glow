@@ -39,7 +39,6 @@ function OverOns() {
   return (
     <>
       <section className="section-blue relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bugg-grid bugg-grid-fade" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
           <div className="eyebrow">Over BUGG</div>
           <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05] max-w-4xl">
