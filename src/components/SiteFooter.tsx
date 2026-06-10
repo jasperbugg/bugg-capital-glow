@@ -27,8 +27,7 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm">
             <li><Link to="/over-ons" className="hover:text-primary">Over ons</Link></li>
             <li><Link to="/fondsen" className="hover:text-primary">Fondsen</Link></li>
-            <li><Link to="/casussen" className="hover:text-primary">Portefeuille</Link></li>
-            <li><Link to="/uw-inzicht" className="hover:text-primary">Uw Inzicht</Link></li>
+            <li><Link to="/casussen" className="hover:text-primary">Casussen</Link></li>
             <li><Link to="/investments" className="hover:text-primary">Investments</Link></li>
             <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
           </ul>
