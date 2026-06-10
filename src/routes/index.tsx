@@ -245,21 +245,19 @@ function Home() {
               )}
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link to="/contact" className="btn-primary">
-                {t("Gesprek inplannen", "Schedule a call")} <ArrowRight size={16} />
-              </Link>
-              <button onClick={() => openModal(t("Whitepaper", "Whitepaper"))} className="btn-ghost">
+              <button data-tf-popup={TYPEFORM_CALL_ID} className="btn-primary">
+                {t("Gesprek aanvragen", "Schedule a call")} <ArrowRight size={16} />
+              </button>
+              <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost">
                 {t("Download whitepaper", "Download whitepaper")}
               </button>
             </div>
-            <Link to="/fondsen" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
-              {t("Bekijk de fondsen", "View our funds")} →
+            <Link to="/cases" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
+              {t("Bekijk de cases", "View cases")} →
             </Link>
           </div>
         </div>
       </section>
-
-      <WhitepaperModal open={modal.open} onClose={closeModal} title={modal.title} />
     </>
   );
 }
