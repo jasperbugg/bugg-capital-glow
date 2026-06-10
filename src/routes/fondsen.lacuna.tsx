@@ -132,12 +132,10 @@ function LacunaPage() {
             )}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <button onClick={() => setModalOpen(true)} className="btn-primary">
+            <button data-tf-popup="YOUR_TYPEFORM_ID" className="btn-primary">
               {t("Documentatie aanvragen", "Request documentation")} <ArrowRight size={16} />
             </button>
-            <Link to="/contact" className="btn-ghost">
-              {t("Gesprek inplannen", "Schedule a call")}
-            </Link>
+            <button data-tf-popup="YOUR_TYPEFORM_ID_2" className="btn-ghost">{t("Gesprek inplannen", "Schedule a call")}</button>
           </div>
         </div>
       </section>
@@ -235,10 +233,10 @@ function LacunaPage() {
               )}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <button onClick={() => setModalOpen(true)} className="btn-primary">
+              <button data-tf-popup="YOUR_TYPEFORM_ID" className="btn-primary">
                 {t("Toegang aanvragen", "Request access")} <ArrowRight size={16} />
               </button>
-              <Link to="/contact" className="btn-ghost">{t("Gesprek plannen", "Schedule a call")}</Link>
+              <button data-tf-popup="YOUR_TYPEFORM_ID_2" className="btn-ghost">{t("Gesprek plannen", "Schedule a call")}</button>
             </div>
           </div>
         </div>
