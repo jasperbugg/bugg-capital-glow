@@ -27,22 +27,35 @@ function Home() {
     { value: "12–14%", label: t("Target rendement p.j.", "Target return p.a.") },
   ];
 
-  const timeline = [
-    { period: "2012–2014", title: "SvB Group", desc: t("E-commerce holding", "E-commerce holding") },
-    { period: "2011–2019", title: "Colengo", desc: t("E-tail & retail technologie", "E-tail & retail technology") },
-    { period: "2016–2020", title: "Fangage", desc: t("Social creator platform (exit 2020)", "Social creator platform (exit 2020)") },
-    { period: t("2019–nu", "2019–now"), title: "Specialstays", desc: t("Short-stay operating platform", "Short-stay operating platform") },
-    { period: "2024", title: "Lacuna Fund", desc: t("Eerste vastgoedfonds", "First real estate fund") },
-    { period: "2026", title: "Lama Fund", desc: t("Premium groepsverblijven", "Premium group stays") },
-  ];
-
-  const flywheel = [
-    t("Data & locatieselectie", "Data & location selection"),
-    t("Aankoop op juiste prijs", "Acquisition at the right price"),
-    t("Renovatie & inrichting", "Renovation & interior"),
-    t("Specialstays-activatie", "Specialstays activation"),
-    t("Boven-markt exploitatie", "Above-market operation"),
-    t("Rendement & herinvestering", "Returns & reinvestment"),
+  const phases = [
+    {
+      num: "1",
+      tag: t("Vastgoed", "Real estate"),
+      tagline: t("Waardecreatie", "Value creation"),
+      items: [
+        { n: "1.1", title: t("Marktanalyse & prognoses", "Market analysis & forecasts"), desc: t("Analyse van markten, locaties en exploitatiemogelijkheden.", "Analysis of markets, locations and operating potential.") },
+        { n: "1.2", title: t("Vastgoedontwikkeling", "Real estate development"), desc: t("Verwerving en ontwikkeling gericht op rendement en waardecreatie.", "Acquisition and development focused on yield and value creation.") },
+        { n: "1.3", title: t("Interieurontwerp", "Interior design"), desc: t("Inrichting voor het hogere segment — comfort dat verhuurwaarde verhoogt.", "Premium-segment interiors — comfort that lifts rental value.") },
+      ],
+    },
+    {
+      num: "2",
+      tag: "Specialstays",
+      tagline: t("Rendement", "Returns"),
+      items: [
+        { n: "2.1", title: t("Distributie via 100+ kanalen", "Distribution across 100+ channels"), desc: t("Gelijktijdig zichtbaar op meer dan honderd boekingsplatformen.", "Simultaneously visible on more than a hundred booking platforms.") },
+        { n: "2.2", title: t("Professionele content", "Professional content"), desc: t("Foto's, video en beschrijving die bezoekers overtuigen.", "Photography, video and copy that convert visitors.") },
+        { n: "2.3", title: t("Prijsoptimalisatie", "Price optimisation"), desc: t("Dynamische prijsstrategie voor maximale opbrengst.", "Dynamic pricing strategy for maximum yield.") },
+      ],
+    },
+    {
+      num: "3",
+      tag: t("Groei", "Growth"),
+      tagline: t("Optimalisatie", "Optimisation"),
+      items: [
+        { n: "3.1", title: t("Analyseren & verbeteren", "Analyse & improve"), desc: t("Doorlopende meting van prestaties en optimalisatie op basis van data.", "Continuous performance measurement and data-driven optimisation.") },
+      ],
+    },
   ];
 
   return (
