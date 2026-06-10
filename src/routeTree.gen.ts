@@ -14,6 +14,7 @@ import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as InvestmentsRouteImport } from './routes/investments'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CasussenRouteImport } from './routes/casussen'
+import { Route as CasesRouteImport } from './routes/cases'
 import { Route as FondsenRouteRouteImport } from './routes/fondsen.route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FondsenIndexRouteImport } from './routes/fondsen.index'
@@ -45,6 +46,11 @@ const CasussenRoute = CasussenRouteImport.update({
   path: '/casussen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FondsenRouteRoute = FondsenRouteRouteImport.update({
   id: '/fondsen',
   path: '/fondsen',
@@ -74,6 +80,7 @@ const FondsenLacunaRoute = FondsenLacunaRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/fondsen': typeof FondsenRouteRouteWithChildren
+  '/cases': typeof CasesRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
   '/investments': typeof InvestmentsRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cases': typeof CasesRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
   '/investments': typeof InvestmentsRoute
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/fondsen': typeof FondsenRouteRouteWithChildren
+  '/cases': typeof CasesRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
   '/investments': typeof InvestmentsRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/fondsen'
+    | '/cases'
     | '/casussen'
     | '/contact'
     | '/investments'
@@ -123,6 +133,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cases'
     | '/casussen'
     | '/contact'
     | '/investments'
@@ -135,6 +146,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/fondsen'
+    | '/cases'
     | '/casussen'
     | '/contact'
     | '/investments'
@@ -148,6 +160,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FondsenRouteRoute: typeof FondsenRouteRouteWithChildren
+  CasesRoute: typeof CasesRoute
   CasussenRoute: typeof CasussenRoute
   ContactRoute: typeof ContactRoute
   InvestmentsRoute: typeof InvestmentsRoute
@@ -190,6 +203,13 @@ declare module '@tanstack/react-router' {
       path: '/casussen'
       fullPath: '/casussen'
       preLoaderRoute: typeof CasussenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fondsen': {
@@ -249,6 +269,7 @@ const FondsenRouteRouteWithChildren = FondsenRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FondsenRouteRoute: FondsenRouteRouteWithChildren,
+  CasesRoute: CasesRoute,
   CasussenRoute: CasussenRoute,
   ContactRoute: ContactRoute,
   InvestmentsRoute: InvestmentsRoute,
@@ -258,13 +279,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

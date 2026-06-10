@@ -5,6 +5,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import buggLogoWhite from "@/assets/bugg-logo-white.png.asset.json";
 
+const TYPEFORM_CALL_ID = "YOUR_TYPEFORM_ID_2";
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [fondsenOpen, setFondsenOpen] = useState(false);
@@ -26,13 +28,6 @@ export function SiteHeader() {
           >
             {t("Home", "Home")}
           </Link>
-          <Link
-            to="/over-ons"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            activeProps={{ className: "text-foreground font-medium" }}
-          >
-            {t("Over ons", "About")}
-          </Link>
 
           {/* Fondsen dropdown */}
           <div
@@ -50,30 +45,53 @@ export function SiteHeader() {
             </Link>
             {fondsenOpen && (
               <div className="absolute left-0 top-full pt-3">
-                <div className="min-w-44 border border-border bg-background shadow-lg">
+                <div className="min-w-52 border border-border bg-background shadow-lg">
                   <Link
                     to="/fondsen/lacuna"
                     className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
                   >
-                    Lacuna
+                    Lacuna Fund
                   </Link>
                   <Link
                     to="/fondsen/lama"
                     className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors border-t border-border"
                   >
-                    Lama
+                    Lama Fund
                   </Link>
+                  <div
+                    className="block px-4 py-3 text-sm text-muted-foreground/40 cursor-not-allowed border-t border-border"
+                    aria-disabled="true"
+                  >
+                    {t("Residentieel", "Residential")}
+                    <span className="ml-2 text-[10px] uppercase tracking-widest">
+                      {t("Binnenkort", "Soon")}
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
           <Link
+            to="/cases"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+            activeProps={{ className: "text-foreground font-medium" }}
+          >
+            {t("Cases", "Cases")}
+          </Link>
+          <Link
             to="/investments"
             className="text-muted-foreground hover:text-foreground transition-colors"
             activeProps={{ className: "text-foreground font-medium" }}
           >
             Investments
+          </Link>
+          <Link
+            to="/over-ons"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+            activeProps={{ className: "text-foreground font-medium" }}
+          >
+            {t("Over ons", "About")}
           </Link>
           <Link
             to="/contact"
@@ -85,9 +103,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Link to="/contact" className="btn-primary !py-2 !px-4">
+          <button data-tf-popup={TYPEFORM_CALL_ID} className="btn-primary !py-2 !px-4">
             {t("Gesprek aanvragen", "Schedule a call")} →
-          </Link>
+          </button>
           <LanguageToggle />
         </div>
 
@@ -109,27 +127,33 @@ export function SiteHeader() {
             <Link to="/" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1" activeProps={{ className: "text-foreground font-medium" }} activeOptions={{ exact: true }}>
               {t("Home", "Home")}
             </Link>
-            <Link to="/over-ons" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1" activeProps={{ className: "text-foreground font-medium" }}>
-              {t("Over ons", "About")}
-            </Link>
             <Link to="/fondsen" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1" activeProps={{ className: "text-foreground font-medium" }}>
               {t("Fondsen", "Funds")}
             </Link>
             <Link to="/fondsen/lacuna" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1 pl-4 text-sm">
-              — Lacuna
+              — Lacuna Fund
             </Link>
             <Link to="/fondsen/lama" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1 pl-4 text-sm">
-              — Lama
+              — Lama Fund
+            </Link>
+            <span className="text-muted-foreground/40 py-1 pl-4 text-sm">
+              — {t("Residentieel (binnenkort)", "Residential (soon)")}
+            </span>
+            <Link to="/cases" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1" activeProps={{ className: "text-foreground font-medium" }}>
+              {t("Cases", "Cases")}
             </Link>
             <Link to="/investments" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1" activeProps={{ className: "text-foreground font-medium" }}>
               Investments
             </Link>
+            <Link to="/over-ons" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1" activeProps={{ className: "text-foreground font-medium" }}>
+              {t("Over ons", "About")}
+            </Link>
             <Link to="/contact" onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground py-1" activeProps={{ className: "text-foreground font-medium" }}>
               Contact
             </Link>
-            <Link to="/contact" onClick={() => setOpen(false)} className="btn-primary mt-2 !justify-start">
+            <button data-tf-popup={TYPEFORM_CALL_ID} onClick={() => setOpen(false)} className="btn-primary mt-2 !justify-start">
               {t("Gesprek aanvragen", "Schedule a call")} →
-            </Link>
+            </button>
           </nav>
         </div>
       )}

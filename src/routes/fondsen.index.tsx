@@ -50,39 +50,61 @@ function FondsenPage() {
 
       {/* FUND SELECTOR */}
       <section>
-        <div className="container mx-auto px-6 py-24 grid md:grid-cols-2 gap-6">
-          <Link to="/fondsen/lacuna" className="panel p-10 hover:border-primary transition-colors group">
+        <div className="container mx-auto px-6 py-24 grid md:grid-cols-3 gap-6">
+          <Link to="/fondsen/lacuna" className="panel p-10 hover:border-primary transition-colors group flex flex-col">
             <div className="eyebrow">Lacuna · Leasehold</div>
             <h3 className="mt-5 text-3xl md:text-4xl font-semibold">
-              {t("Structureel inkomen.", "Structural income.")}
+              {t("Built to compound.", "Built to compound.")}
             </h3>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground flex-1">
               {t(
-                "12%+ target · 25+ units · €5M gecommitteerd",
-                "12%+ target · 25+ units · €5M committed",
+                "Short-stay units via leasehold in Belgisch Limburg.",
+                "Short-stay units via leasehold in Belgian Limburg.",
               )}
             </p>
+            <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+              {t("12%+ target · €5M gecommitteerd", "12%+ target · €5M committed")}
+            </p>
             <div className="mt-8 inline-flex items-center gap-2 text-sm text-primary">
-              {t("Bekijk Lacuna", "View Lacuna")}{" "}
+              {t("Meer over Lacuna", "More about Lacuna")}{" "}
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
-          <Link to="/fondsen/lama" className="panel p-10 hover:border-primary transition-colors group">
+
+          <Link to="/fondsen/lama" className="panel p-10 hover:border-primary transition-colors group flex flex-col">
             <div className="eyebrow">Lama · Freehold</div>
             <h3 className="mt-5 text-3xl md:text-4xl font-semibold">
-              {t("Vermogen dat compoundt.", "Wealth that compounds.")}
+              {t("Built to compound.", "Built to compound.")}
             </h3>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground flex-1">
               {t(
-                "14%+ target · Pilot fase · €2M gecommitteerd",
-                "14%+ target · Pilot phase · €2M committed",
+                "Premium groepsverblijven met directe eigendom.",
+                "Premium group stays in direct ownership.",
               )}
             </p>
+            <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+              {t("14%+ target · €2M pilot", "14%+ target · €2M pilot")}
+            </p>
             <div className="mt-8 inline-flex items-center gap-2 text-sm text-primary">
-              {t("Bekijk Lama", "View Lama")}{" "}
+              {t("Meer over Lama", "More about Lama")}{" "}
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
+
+          <div className="panel p-10 flex flex-col opacity-50 cursor-not-allowed">
+            <div className="text-xs uppercase tracking-widest text-muted-foreground">
+              {t("Residentieel · Coming soon", "Residential · Coming soon")}
+            </div>
+            <h3 className="mt-5 text-3xl md:text-4xl font-semibold text-muted-foreground">
+              {t("Volgende fase.", "Next phase.")}
+            </h3>
+            <p className="mt-4 text-muted-foreground flex-1">
+              {t(
+                "Residentieel vastgoed in het grensgebied NL–BE. Meer details volgen.",
+                "Residential real estate in the NL–BE border region. More details to follow.",
+              )}
+            </p>
+          </div>
         </div>
       </section>
     </main>
