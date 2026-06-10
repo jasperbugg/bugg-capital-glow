@@ -22,7 +22,7 @@ function Home() {
 
   const kpis = [
     { value: "40+", label: t("Panden in portefeuille", "Properties in portfolio") },
-    { value: "€7M", label: t("Gecommitteerd capital", "Committed capital") },
+    { value: "€7M", label: t("Gecommitteerd kapitaal", "Committed capital") },
     { value: "€50M", label: t("Target AUM", "Target AUM") },
     { value: "12–14%", label: t("Target rendement p.j.", "Target return p.a.") },
   ];
@@ -49,20 +49,19 @@ function Home() {
     <>
       {/* HERO */}
       <section className="section-blue relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bugg-grid bugg-grid-fade" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-28 md:py-40">
           <div className="max-w-3xl mx-auto text-center">
             <div className="eyebrow justify-center">Built to compound</div>
             <h1 className="mt-8 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
               {t(
-                <>Wij bouwen platforms.<br /><span className="italic-accent">Nu bouwen wij aan vermogen.</span></>,
-                <>We build platforms.<br /><span className="italic-accent">Now we build wealth.</span></>,
+                <>Wij bouwen platforms.<br /><span className="italic-accent">Én bouwen wij aan vermogen.</span></>,
+                <>We build platforms.<br /><span className="italic-accent">And build wealth.</span></>,
               )}
             </h1>
             <p className="mt-8 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               {t(
-                "BUGG Capital is een investment holding in het grensgebied NL–BE. Van platformbedrijven naar vastgoedfondsen. De partners investeren zelf mee. 40+ panden. €7M gecommitteerd. Since 2012.",
-                "BUGG Capital is an investment holding in the NL–BE border region. From platform ventures to real estate funds. The partners invest alongside you. 40+ properties. €7M committed. Since 2012.",
+                "BUGG Capital is een investment holding in het grensgebied NL–BE. Specialstays als operating platform, Lacuna en Lama als vastgoedfondsen. De partners investeren zelf mee. 40+ panden. €7M gecommitteerd. Actief since 2012.",
+                "BUGG Capital is an investment holding in the NL–BE border region. Specialstays as operating platform, Lacuna and Lama as real estate funds. The partners invest alongside you. 40+ properties. €7M committed. Actief since 2012.",
               )}
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -114,8 +113,8 @@ function Home() {
             </p>
             <p>
               {t(
-                "Sinds 2024 zetten wij die kennis in op de OTA-markt. Airbnb, Booking.com, VRBO en Expedia zijn de platformen. Belgisch vastgoed is het product. Specialstays — eigen ontwikkeld operating platform — is de motor. Wij investeren zelf mee in elk fonds. Altijd.",
-                "Since 2024, we apply that knowledge to the OTA market. Airbnb, Booking.com, VRBO and Expedia are the platforms. Belgian real estate is the product. Specialstays — a proprietary operating platform — is the engine. We invest alongside you in every fund. Always.",
+                "Specialstays — ons eigen operating platform, actief since 2019 — beheert pricing, distributie en gastbeleving over alle OTA-kanalen. Belgisch vastgoed is het product. De fondsen zijn de investeringsvehikels. Wij investeren zelf mee in elk fonds. Altijd.",
+                "Specialstays — our proprietary operating platform, active since 2019 — manages pricing, distribution and guest experience across every OTA. Belgian real estate is the product. The funds are the investment vehicles. We invest alongside you in every fund. Always.",
               )}
             </p>
             <Link to="/over-ons" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
