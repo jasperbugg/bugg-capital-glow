@@ -37,31 +37,30 @@
 
 :root {
   --radius: 0.5rem;
-  /* BUGG brand: primary #145099 (Pantone 7686 C) */
+  /* BUGG brand: only two colors — #145099 and #ffffff */
   --brand: #145099;
-  --brand-deep: #0d3a72;
-  --brand-darker: #082548;
-  --background: #0a2e5c;
-  --foreground: #ffffff;
-  --surface: #0d3a72;
-  --surface-2: #114a8a;
-  --card: #0d3a72;
-  --card-foreground: #ffffff;
-  --popover: #0d3a72;
-  --popover-foreground: #ffffff;
+
+  --background: #ffffff;
+  --foreground: #145099;
+  --surface: #f5f7fa;
+  --surface-2: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #145099;
+  --popover: #ffffff;
+  --popover-foreground: #145099;
   --primary: #145099;
   --primary-foreground: #ffffff;
   --accent-blue: #145099;
-  --secondary: #114a8a;
-  --secondary-foreground: #ffffff;
-  --muted: #114a8a;
-  --muted-foreground: #b8c9e0;
-  --accent: #145099;
-  --accent-foreground: #ffffff;
-  --destructive: oklch(0.6 0.22 25);
+  --secondary: #f5f7fa;
+  --secondary-foreground: #145099;
+  --muted: #f5f7fa;
+  --muted-foreground: rgba(20, 80, 153, 0.65);
+  --accent: #f5f7fa;
+  --accent-foreground: #145099;
+  --destructive: #c0392b;
   --destructive-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.12);
-  --input: rgba(255, 255, 255, 0.16);
+  --border: rgba(20, 80, 153, 0.12);
+  --input: rgba(20, 80, 153, 0.18);
   --ring: #145099;
 }
 
@@ -76,29 +75,58 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4 {
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
+    font-weight: 800;
   }
 }
 
 @layer components {
-  .bugg-grid {
-    background-image:
-      linear-gradient(to right, oklch(1 0 0 / 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(1 0 0 / 0.04) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
+  /* Decorative grid removed — kept as no-op so existing class usage doesn't break */
+  .bugg-grid,
   .bugg-grid-fade {
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 90%);
+    background-image: none;
+    mask-image: none;
   }
+
+  /* Section helpers — switch the entire token scope, so all existing
+     utilities (text-foreground, text-muted-foreground, border-border,
+     bg-primary, .btn-primary) automatically invert inside a blue section. */
+  .section-blue {
+    background: #145099;
+    color: #ffffff;
+    --background: #145099;
+    --foreground: #ffffff;
+    --muted-foreground: rgba(255, 255, 255, 0.78);
+    --border: rgba(255, 255, 255, 0.2);
+    --input: rgba(255, 255, 255, 0.28);
+    --primary: #ffffff;
+    --primary-foreground: #145099;
+    --secondary: rgba(255, 255, 255, 0.1);
+    --secondary-foreground: #ffffff;
+    --card: #145099;
+    --card-foreground: #ffffff;
+    --accent: rgba(255, 255, 255, 0.08);
+    --accent-foreground: #ffffff;
+    --ring: #ffffff;
+  }
+  .section-light {
+    background: #f5f7fa;
+    color: #145099;
+  }
+  .section-white {
+    background: #ffffff;
+    color: #145099;
+  }
+
   .eyebrow {
     font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--muted-foreground);
+    color: currentColor;
+    opacity: 0.7;
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -107,13 +135,15 @@
     content: "";
     width: 1.75rem;
     height: 1px;
-    background: var(--muted-foreground);
+    background: currentColor;
+    opacity: 0.6;
   }
   .italic-accent {
     font-style: italic;
-    color: var(--muted-foreground);
-    font-weight: 300;
+    font-weight: 400;
+    opacity: 0.75;
   }
+
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -122,34 +152,52 @@
     background: var(--primary);
     color: var(--primary-foreground);
     padding: 0.875rem 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.875rem;
-    transition: all 0.2s;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
     border: 1px solid var(--primary);
   }
   .btn-primary:hover {
-    background: #1a63bc;
-    border-color: #1a63bc;
+    background: color-mix(in srgb, var(--primary) 88%, #000);
+    border-color: color-mix(in srgb, var(--primary) 88%, #000);
   }
+  .section-blue .btn-primary:hover {
+    background: #f1f4f9;
+    border-color: #f1f4f9;
+    color: #145099;
+  }
+
   .btn-ghost {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     background: transparent;
-    color: var(--foreground);
+    color: currentColor;
     padding: 0.875rem 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.875rem;
-    border: 1px solid var(--border);
-    transition: all 0.2s;
+    border: 1px solid currentColor;
+    transition: background-color 0.2s, color 0.2s;
   }
   .btn-ghost:hover {
-    border-color: var(--primary);
-    color: var(--primary);
+    background: currentColor;
+    color: var(--background);
   }
+
   .panel {
-    background: var(--surface);
+    background: var(--card);
+    color: var(--card-foreground);
     border: 1px solid var(--border);
+  }
+  .section-blue .panel {
+    background: #ffffff;
+    color: #145099;
+    --foreground: #145099;
+    --muted-foreground: rgba(20, 80, 153, 0.65);
+    --border: rgba(20, 80, 153, 0.12);
+    --primary: #145099;
+    --primary-foreground: #ffffff;
+    border-color: rgba(255, 255, 255, 0.25);
   }
 }

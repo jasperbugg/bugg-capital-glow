@@ -39,7 +39,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-border">
+      <section className="section-blue relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bugg-grid bugg-grid-fade" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-28 md:py-40">
           <div className="max-w-3xl mx-auto text-center">
@@ -201,7 +201,7 @@ function Home() {
       </section>
 
       {/* THREE FUNDS */}
-      <section className="border-b border-border">
+      <section className="section-blue border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
           <div className="max-w-2xl">
             <div className="eyebrow">Co-ownership</div>
@@ -294,7 +294,7 @@ function Home() {
       </section>
 
       {/* CLOSING CTA */}
-      <section>
+      <section className="section-blue">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-28 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="eyebrow">{t("Eerste stap", "First step")}</div>
