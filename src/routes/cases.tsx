@@ -49,13 +49,14 @@ const cases: Case[] = [
     name: "The Windmill",
     locationType: { nl: "Belgisch Limburg — unieke molen 8+ kamers", en: "Belgian Limburg — unique windmill 8+ rooms" },
     yearAcquired: "2025",
-    appreciation: { } as never as string, // placeholder removed below
+    appreciation: "n.t.b.",
     yieldPerYear: { nl: "NOI target €60K p.j.", en: "NOI target €60K p.a." },
     intro: {
       nl: "Een verlaten windmolen in Belgisch Limburg. Uniek karakter, 8+ slaapkamers. Transformatie van woning naar premium groepsverblijf met ADR boven €800/nacht.",
       en: "An abandoned windmill in Belgian Limburg. Unique character, 8+ bedrooms. Transformed from residential property into a premium group stay with ADR above €800/night.",
     },
-  } as Case,
+  },
+
   {
     fund: "lama",
     name: "Villa Grimbia",
