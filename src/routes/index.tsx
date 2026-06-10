@@ -8,10 +8,10 @@ const TYPEFORM_CALL_ID = "YOUR_TYPEFORM_ID_2";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BUGG Capital — From Code to Capital" },
-      { name: "description", content: "Investment holding in het grensgebied NL–BE. Van platformbedrijven naar vastgoedfondsen. Built to compound." },
-      { property: "og:title", content: "BUGG Capital — From Code to Capital" },
-      { property: "og:description", content: "Van platformbedrijven naar vastgoedfondsen. Co-ownership in Belgisch short-stay vastgoed. Built to compound." },
+      { title: "BUGG Capital — Platform builders. Vastgoedfondsen." },
+      { name: "description", content: "Investment holding in het grensgebied NL–BE. Specialstays als operating platform, Lacuna en Lama als vastgoedfondsen. Built to compound." },
+      { property: "og:title", content: "BUGG Capital — Platform builders. Vastgoedfondsen." },
+      { property: "og:description", content: "Specialstays als operating platform, vastgoedfondsen als asset class. Co-ownership in Belgisch short-stay vastgoed. Built to compound." },
     ],
   }),
   component: Home,
@@ -27,22 +27,35 @@ function Home() {
     { value: "12–14%", label: t("Target rendement p.j.", "Target return p.a.") },
   ];
 
-  const timeline = [
-    { period: "2012–2014", title: "SvB Group", desc: t("E-commerce holding", "E-commerce holding") },
-    { period: "2011–2019", title: "Colengo", desc: t("E-tail & retail technologie", "E-tail & retail technology") },
-    { period: "2016–2020", title: "Fangage", desc: t("Social creator platform (exit 2020)", "Social creator platform (exit 2020)") },
-    { period: t("2019–nu", "2019–now"), title: "Specialstays", desc: t("Short-stay operating platform", "Short-stay operating platform") },
-    { period: "2024", title: "Lacuna Fund", desc: t("Eerste vastgoedfonds", "First real estate fund") },
-    { period: "2026", title: "Lama Fund", desc: t("Premium groepsverblijven", "Premium group stays") },
-  ];
-
-  const flywheel = [
-    t("Data & locatieselectie", "Data & location selection"),
-    t("Aankoop op juiste prijs", "Acquisition at the right price"),
-    t("Renovatie & inrichting", "Renovation & interior"),
-    t("Specialstays-activatie", "Specialstays activation"),
-    t("Boven-markt exploitatie", "Above-market operation"),
-    t("Rendement & herinvestering", "Returns & reinvestment"),
+  const phases = [
+    {
+      num: "1",
+      tag: t("Vastgoed", "Real estate"),
+      tagline: t("Waardecreatie", "Value creation"),
+      items: [
+        { n: "1.1", title: t("Marktanalyse & prognoses", "Market analysis & forecasts"), desc: t("Analyse van markten, locaties en exploitatiemogelijkheden.", "Analysis of markets, locations and operating potential.") },
+        { n: "1.2", title: t("Vastgoedontwikkeling", "Real estate development"), desc: t("Verwerving en ontwikkeling gericht op rendement en waardecreatie.", "Acquisition and development focused on yield and value creation.") },
+        { n: "1.3", title: t("Interieurontwerp", "Interior design"), desc: t("Inrichting voor het hogere segment — comfort dat verhuurwaarde verhoogt.", "Premium-segment interiors — comfort that lifts rental value.") },
+      ],
+    },
+    {
+      num: "2",
+      tag: "Specialstays",
+      tagline: t("Rendement", "Returns"),
+      items: [
+        { n: "2.1", title: t("Distributie via 100+ kanalen", "Distribution across 100+ channels"), desc: t("Gelijktijdig zichtbaar op meer dan honderd boekingsplatformen.", "Simultaneously visible on more than a hundred booking platforms.") },
+        { n: "2.2", title: t("Professionele content", "Professional content"), desc: t("Foto's, video en beschrijving die bezoekers overtuigen.", "Photography, video and copy that convert visitors.") },
+        { n: "2.3", title: t("Prijsoptimalisatie", "Price optimisation"), desc: t("Dynamische prijsstrategie voor maximale opbrengst.", "Dynamic pricing strategy for maximum yield.") },
+      ],
+    },
+    {
+      num: "3",
+      tag: t("Groei", "Growth"),
+      tagline: t("Optimalisatie", "Optimisation"),
+      items: [
+        { n: "3.1", title: t("Analyseren & verbeteren", "Analyse & improve"), desc: t("Doorlopende meting van prestaties en optimalisatie op basis van data.", "Continuous performance measurement and data-driven optimisation.") },
+      ],
+    },
   ];
 
   return (
@@ -124,110 +137,53 @@ function Home() {
         </div>
       </section>
 
-      {/* TIMELINE / TRACK RECORD */}
+      {/* FASES */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
-              <div className="eyebrow">{t("Track record", "Track record")}</div>
-              <h2 className="mt-6 text-4xl md:text-5xl font-bold">From Code to Capital.</h2>
+              <div className="eyebrow">{t("Hoe het werkt", "How it works")}</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+                {t(
+                  <>Van vastgoed<br /><span className="italic-accent">tot rendement.</span></>,
+                  <>From real estate<br /><span className="italic-accent">to returns.</span></>,
+                )}
+              </h2>
             </div>
             <p className="text-muted-foreground self-end leading-relaxed">
               {t(
-                "14 jaar ondernemen. Van IT naar vastgoed. Elke stap was een platform.",
-                "14 years of building. From IT to real estate. Every step was a platform.",
+                "Drie fases. Eén systeem. Built to compound.",
+                "Three phases. One system. Built to compound.",
               )}
             </p>
           </div>
 
-          <div className="hidden md:block overflow-x-auto -mx-6 lg:-mx-10 px-6 lg:px-10">
-            <div className="relative flex gap-px bg-border min-w-max">
-              {timeline.map((item) => (
-                <div key={item.title} className="bg-background p-6 w-64 flex flex-col">
-                  <div className="text-xs uppercase tracking-widest text-primary">{item.period}</div>
-                  <div className="mt-4 text-xl font-semibold">{item.title}</div>
-                  <div className="mt-2 text-sm text-muted-foreground">{item.desc}</div>
+          <div className="grid md:grid-cols-3 gap-px bg-border">
+            {phases.map((p) => (
+              <div key={p.num} className="bg-background p-8 flex flex-col">
+                <div className="text-xs uppercase tracking-widest text-primary">
+                  {t("Fase", "Phase")} {p.num} — {p.tag}
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="md:hidden relative border-l border-border pl-6 space-y-8">
-            {timeline.map((item) => (
-              <div key={item.title} className="relative">
-                <span className="absolute -left-[1.6rem] top-2 w-2 h-2 rounded-full bg-primary" />
-                <div className="text-xs uppercase tracking-widest text-primary">{item.period}</div>
-                <div className="mt-1 text-lg font-semibold">{item.title}</div>
-                <div className="mt-1 text-sm text-muted-foreground">{item.desc}</div>
+                <h3 className="mt-3 text-2xl font-semibold">
+                  <span className="italic-accent">{p.tagline}</span>
+                </h3>
+                <div className="mt-8 space-y-6">
+                  {p.items.map((item) => (
+                    <div key={item.n} className="flex gap-4">
+                      <div className="text-xs font-mono text-primary pt-1 shrink-0 w-8">{item.n}</div>
+                      <div>
+                        <div className="font-semibold text-foreground">{item.title}</div>
+                        <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FLYWHEEL */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
-          <div className="max-w-3xl">
-            <div className="eyebrow">{t("Het vliegwiel", "The flywheel")}</div>
-            <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
-              {t("Het systeem achter het rendement.", "The system behind the returns.")}
-            </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
-              {t(
-                "Vastgoed is het product. Specialstays is de motor. Het systeem compoundt.",
-                "Real estate is the product. Specialstays is the engine. The system compounds.",
-              )}
-            </p>
-          </div>
-
-          {/* Desktop: circular flow */}
-          <div className="hidden lg:block relative mx-auto mt-16 w-[640px] h-[640px]">
-            <div className="absolute inset-10 rounded-full border-2 border-dashed border-primary/30" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center max-w-[220px]">
-                <div className="text-xs uppercase tracking-widest text-primary">Built to compound</div>
-                <div className="mt-2 text-lg font-semibold text-foreground">
-                  {t("Het BUGG-vliegwiel", "The BUGG flywheel")}
-                </div>
-              </div>
-            </div>
-            {flywheel.map((label, i) => {
-              const angle = (i / flywheel.length) * 2 * Math.PI - Math.PI / 2;
-              const r = 260;
-              const x = Math.cos(angle) * r;
-              const y = Math.sin(angle) * r;
-              return (
-                <div
-                  key={label}
-                  className="absolute w-44 -translate-x-1/2 -translate-y-1/2 text-center"
-                  style={{ left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)` }}
-                >
-                  <div className="mx-auto w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                    {i + 1}
-                  </div>
-                  <div className="mt-3 text-sm font-semibold text-foreground leading-tight">{label}</div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Mobile / tablet: stacked steps */}
-          <div className="lg:hidden mt-12 relative border-l-2 border-primary/30 pl-8 space-y-8">
-            {flywheel.map((label, i) => (
-              <div key={label} className="relative">
-                <span className="absolute -left-[2.4rem] top-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
-                  {i + 1}
-                </span>
-                <div className="text-base font-semibold text-foreground">{label}</div>
-              </div>
-            ))}
-            <div className="pl-1 text-xs uppercase tracking-widest text-primary">
-              ↻ {t("Terug naar stap 1 — Built to compound", "Back to step 1 — Built to compound")}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* SPECIALSTAYS — DE MOTOR */}
       <section className="border-b border-border">

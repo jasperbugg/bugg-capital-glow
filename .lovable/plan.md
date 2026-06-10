@@ -1,62 +1,57 @@
-Pitch-content verwerken in `/fondsen/lama` + één homepage-toevoeging. Bestaande cijfers op site (14%+, €25M AUM, etc.) blijven leidend — pitch-getallen die daarmee conflicteren worden niet overgenomen. Geen designwijzigingen. NL + EN via `useLanguage()`.
+Drie geaccepteerde feedbackpunten van Stef + één visueel toevoegblok. Hero blijft ongewijzigd ("Wij bouwen platforms. Én bouwen wij aan vermogen.") — Stef's hero-wijziging is bewust niet doorgevoerd. Alle nieuwe strings via `t("NL","EN")`.
 
-### 1. `/fondsen/lama` — vijf nieuwe content-secties
+### 1. `/` — Track Record verwijderen
 
-**a. Drie lagen arbitrage** (nieuwe sectie, geplaatst direct ná de SPECS-sectie)
-- Eyebrow: "De edge" / "The edge"
-- Heading: "Drie lagen arbitrage." / "Three layers of arbitrage."
-- Drie panel-blokken naast elkaar:
-  - **Geografie** — "Belgische aankoopprijzen. Nederlandse betalingsbereidheid. De grens is voor de gast irrelevant."
-  - **Duratie** — "De markt prijst deze panden als woning. Hun werkelijke waarde ligt in short-stay exploitatie."
-  - **Digitalisering** — "Specialstays' operating systeem — dynamic pricing, interieurstandaard, reviews — tilt NOI en NAV."
+`src/routes/index.tsx` regels 127–166: hele `{/* TIMELINE / TRACK RECORD */}` sectie verwijderen, inclusief desktop- en mobiel-variant en de bijbehorende `timeline`-data-array bovenin het bestand (mits niet elders gebruikt). Sectie eronder (FLYWHEEL → wordt FASES, zie punt 2) sluit dan direct aan op de hero-/intro-blokken.
 
-**b. Het 4-step machine** (nieuwe sectie, geplaatst ná "In ontwikkeling")
-- Eyebrow: "Hoe het werkt" / "How it works"
-- Heading: "Don't just buy the house. Buy the system."
-- Vier genummerde stappen in 4-koloms grid:
-  1. **Buy** — Acquireren van large-format vastgoed op Belgische kostenbasis.
-  2. **Improve** — Alleen upgraden wat NOI en gastbeleving verhoogt.
-  3. **Execute** — Repeatable operating system: pricing, bezetting, reviews, kosten.
-  4. **Compound** — Cashflow herinvesteren om de portefeuille te schalen.
+De `og:title` / `<title>` "BUGG Capital — From Code to Capital" blijft staan (claim is breder dan alleen de verwijderde sectie). Wel checken of er nog tekstuele referenties zijn naar "From Code to Capital" elders in `index.tsx`; behouden in metadata, niet als zichtbare H2.
 
-**c. Unit economics tabel** (nieuwe sectie, na de 4-step machine)
-- Eyebrow: "Unit economics"
-- Heading: "Robuuste economics op conservatieve baselines." / "Robust economics at conservative baselines."
-- 5-koloms statistiekblok (zelfde stijl als KPI-blok elders):
-  - Capaciteit: 18 gasten
-  - Tarief: €40-60 p.p.
-  - Target ADR: €700-1.000 / nacht
-  - Bezetting: 55-60%
-  - Gestabiliseerde NOI: ~€60K / jaar
-- Onderschrift: "Conservatief gemodelleerd op bewezen bezettingsniveaus, niet op blue-sky scenario's."
+### 2. `/` — Vliegwiel vervangen door 3-fase structuur
 
-**d. Re-rating math** (nieuwe sectie, na unit economics)
-- Eyebrow: "Re-rating"
-- Heading: "Waarom vroeg kapitaal wint." / "Why early capital wins."
-- Tweekoloms layout:
-  - Links: investeringsfase (cost + reno = risk capital) vs gestabiliseerde fase (gewaardeerd op yield ~5,5% cap rate).
-  - Rechts: rekensommetje als grote callout: **~€60K NOI ÷ 5,5% cap rate = ~€1M+ waardering**. Daaronder: "Wie nu instapt, vangt de eerste re-rating zodra het asset overgaat van renovatie-risico naar gestabiliseerde NOI."
+`src/routes/index.tsx` regels 168–230: hele FLYWHEEL-sectie (intro + desktop-cirkel + mobiele stacked-versie) vervangen door één nieuwe sectie met dezelfde sectie-styling (`border-b border-border`, `mx-auto max-w-7xl px-6 lg:px-10 py-24`).
 
-**e. Fund-structure & liquidity-mismatch** (nieuwe sectie, vóór de bestaande BUILT TO COMPOUND closing)
-- Eyebrow: "Fondsstructuur"
-- Heading: "We verkopen units in het fonds. Niet de stenen."
-- Tweekoloms:
-  - Links — **Het probleem**: "Wie het fysieke huis koopt, koopt het als woning — niet als operating asset. De buyer pool kan onze yields niet repliceren en betaalt niet voor de gearbitreerde waarde."
-  - Rechts — **De oplossing**: "Een fondsstructuur vangt die operator-premie. Investeerders kopen participaties in het systeem, met een duidelijk pad naar liquiditeit via unit sales — niet via verkoop van individuele panden."
+Structuur:
+- Eyebrow: `{t("Hoe het werkt", "How it works")}`
+- H2: `{t("Van vastgoed tot rendement.", "From real estate to returns.")}`
+- Korte intro-zin: `{t("Drie fases. Eén systeem. Built to compound.", "Three phases. One system. Built to compound.")}`
+- Drie fase-blokken in `grid md:grid-cols-3 gap-px bg-border`, elk blok `bg-background p-8`:
+  - **Fase 1 — Vastgoed · Waardecreatie** met items 1.1 Marktanalyse & prognoses · 1.2 Vastgoedontwikkeling · 1.3 Interieurontwerp.
+  - **Fase 2 — Specialstays · Rendement** met items 2.1 Distributie via 100+ kanalen · 2.2 Professionele content · 2.3 Prijsoptimalisatie.
+  - **Fase 3 — Groei · Optimalisatie** met item 3.1 Analyseren & verbeteren.
 
-### 2. Homepage — tagline-toevoeging
+Per fase-blok: kleine genummerde "FASE 1/2/3" eyebrow in primary, daaronder de fase-titel (vastgoed/specialstays/groei) en de tagline (waardecreatie/rendement/optimalisatie) in `italic-accent`. Daaronder een verticale lijst van sub-items met genummerde label (1.1, 1.2 …) in primary mono-stijl, vetgedrukte titel, en één muted-foreground beschrijvingszin.
 
-In `src/routes/index.tsx`, in de bestaande Lama-card (THREE FUNDS sectie), één nieuwe regel toevoegen onder de bestaande Lama-beschrijving:
+Geen circulair diagram, geen flywheel-array meer. Bestaande `flywheel` constante in het bestand verwijderen mits ongebruikt elders.
 
-> "Don't just buy the house. Buy the system."
+### 3. `/over-ons` — Bio Stef van Boekel updaten
 
-Italic, in primary color, als tagline-regel. Geen verdere structuurwijzigingen op home.
+`src/routes/over-ons.tsx`, `team` array, entry "Stef van Boekel" → `bio` vervangen door:
 
-### Technische details
+> "Met vijftien jaar ervaring op directieniveau in de platformindustrie heeft hij zich ontwikkeld tot een erkend expert, met media-optredens bij BNR, het Financieele Dagblad en MT/Sprout. Zijn vastgoedervaring strekt zich uit over Nederland, België en Italië. Binnen BUGG fungeert hij als centraal aanspreekpunt voor investeerders en vastgoedeigenaren, met ruime fundraising-ervaring, expertise in dealflow en diepgaande ervaring met aandeelhoudersverantwoordelijkheid en strategische belangenafweging."
 
-- Alle nieuwe content in `src/routes/fondsen.lama.tsx` en `src/routes/index.tsx`.
-- Alle strings via `t("NL", "EN")` uit `useLanguage()`.
-- Geen nieuwe componenten, geen nieuwe dependencies, geen CSS-wijzigingen.
-- Sectie-styling consistent met bestaande Lama-pagina (`section-blue` / wit afwisselend, `panel`, `eyebrow`, `border-b border-border`).
-- Geen Calendly, geen forms, geen externe links toegevoegd.
-- Bestaande "14%+ target" en "€25M target AUM" blijven ongewijzigd in de SPECS-tabel.
+Naam, rol-label ("Commercieel Partner") en LinkedIn-URL blijven gelijk.
+
+### 4. `/contact` — Instagram-mockup toevoegen
+
+Nieuwe sectie onderaan `src/routes/contact.tsx`, na de bestaande events/contact-blokken en vóór de footer-/closing-sectie indien aanwezig. Sectiestijl consistent: `border-b border-border` of `section-blue` afhankelijk van wat eronder staat — alterneren met de huidige laatste sectie.
+
+Layout (volledig statisch, geen IG-script):
+- Eyebrow: "Instagram" · H2: `{t("Volg ons op Instagram.", "Follow us on Instagram.")}`
+- Profielheader-rij (grid md:grid-cols-[auto_1fr] gap-6):
+  - Cirkel-avatar (initialen "B" in primary/15 bg, identiek aan team-avatars op /over-ons) of klein BUGG-logo.
+  - Rechts: handle `bugg.capital`, drie inline stats ("20 berichten · 276 volgers · 578 volgend"), bio-blok:
+    > "Platform-driven real asset investing  
+    > 📍 Lanaken — Maastricht (BE/NL)  
+    > BUILT.TO.COMPOUND.  
+    > 🤝 By Invitation"
+  - "Volg op Instagram" ghost-button → `https://instagram.com/bugg.capital` (target _blank, rel noreferrer).
+- Onder de header: 6-tegel grid (`grid grid-cols-3 md:grid-cols-6 gap-1`) van vierkante tegels. Voor nu placeholder-tegels in `bg-muted` met `aspect-square` en een subtiel `bg-primary/5` overlay; geen externe images. Tegels zijn niet-clickable (statische mockup) — eventueel optioneel allemaal als één link naar het IG-profiel verpakken.
+
+Geen Instagram SDK, geen oEmbed-call, geen netwerkverzoek. Volledig client-side renderbaar, faalt nooit.
+
+### Technische punten
+
+- Geen nieuwe dependencies, geen nieuwe componenten, geen routewijzigingen, geen i18n-bestanden buiten `t()` inline.
+- Hero in `src/routes/index.tsx` (regels 55–58) blijft expliciet ongewijzigd — Stef's voorgestelde "Wij bouwen vermogen" wordt niet doorgevoerd op verzoek van de gebruiker.
+- Na verwijdering van `timeline` / `flywheel` data-constanten: TypeScript build moet groen blijven (geen verwezen imports laten staan).
+- Geen wijzigingen op `/fondsen/*`, `/cases`, `/investments`, `/casussen`, of `/over-ons` buiten de Stef-bio.
