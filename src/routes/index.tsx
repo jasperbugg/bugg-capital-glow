@@ -159,62 +159,130 @@ function Home() {
         </div>
       </section>
 
-      {/* TWO FUNDS */}
+      {/* SPECIALSTAYS — DE MOTOR */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 grid md:grid-cols-2 gap-12">
+          <div>
+            <div className="eyebrow">{t("De motor", "The engine")}</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+              {t(
+                <>Specialstays.<br />Gebouwd door ons.<br /><span className="italic-accent">Aangedreven door data.</span></>,
+                <>Specialstays.<br />Built by us.<br /><span className="italic-accent">Powered by data.</span></>,
+              )}
+            </h2>
+          </div>
+          <div className="space-y-6 text-muted-foreground leading-relaxed">
+            <p>
+              {t(
+                "Specialstays is het operating platform dat BUGG Capital zelf heeft ontwikkeld. Het beheert pricing, distributie, gastbeleving en bezetting over alle OTA-kanalen tegelijk — Airbnb, Booking.com, VRBO en Expedia.",
+                "Specialstays is the operating platform BUGG Capital built in-house. It manages pricing, distribution, guest experience and occupancy across every OTA simultaneously — Airbnb, Booking.com, VRBO and Expedia.",
+              )}
+            </p>
+            <p>
+              {t(
+                "Het is niet uitbesteed. Het is onze edge.",
+                "It is not outsourced. It is our edge.",
+              )}
+            </p>
+            <div className="grid grid-cols-3 gap-px bg-border mt-8">
+              {[
+                { v: "70%", l: t("Gem. bezetting", "Avg. occupancy") },
+                { v: "8.8", l: t("Gastbeoordeling", "Guest rating") },
+                { v: "100+", l: t("Distributiekanalen", "Distribution channels") },
+              ].map((s) => (
+                <div key={s.l} className="bg-background p-5">
+                  <div className="text-2xl md:text-3xl font-bold text-primary">{s.v}</div>
+                  <div className="mt-2 text-[11px] uppercase tracking-widest text-muted-foreground">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* THREE FUNDS */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
           <div className="max-w-2xl">
-            <div className="eyebrow">{t("Beleggingsmogelijkheden", "Investment opportunities")}</div>
+            <div className="eyebrow">Co-ownership</div>
             <h2 className="mt-6 text-4xl md:text-5xl font-bold">
               {t(
-                <>Twee fondsen.<br /><span className="italic-accent">Eén systeem.</span></>,
-                <>Two funds.<br /><span className="italic-accent">One system.</span></>,
+                <>Twee fondsen.<br />Eén systeem.<br /><span className="italic-accent">Eigen capital erin.</span></>,
+                <>Two funds.<br />One system.<br /><span className="italic-accent">Our capital in it.</span></>,
               )}
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               {t(
-                "Co-ownership in Belgisch short-stay vastgoed. De partners investeren zelf mee — iedereen in dezelfde positie.",
-                "Co-ownership in Belgian short-stay real estate. The partners invest alongside you — everyone in the same position.",
+                "De partners investeren zelf mee — dezelfde positie, dezelfde rechten. Naast een beheervergoeding verdienen wij carry — alleen als u rendement maakt.",
+                "The partners invest alongside you — same position, same rights. Beyond a management fee we earn carry — only when you earn a return.",
               )}
             </p>
           </div>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-6">
-            {[
-              {
-                tag: "Lacuna Fund · Leasehold",
-                title: t("Structureel inkomen.", "Structural income."),
-                stats: t("€5M gecommitteerd · 25+ units · 12%+ p.j.", "€5M committed · 25+ units · 12%+ p.a."),
-                cta1: t("Meer over Lacuna", "More about Lacuna"),
-                to: "/fondsen/lacuna" as const,
-                factsheet: "Lacuna Factsheet",
-              },
-              {
-                tag: "Lama Fund · Freehold",
-                title: t("Vermogen dat compoundt.", "Wealth that compounds."),
-                stats: t("€2M pilot · 2 premium assets · 14%+ p.j.", "€2M pilot · 2 premium assets · 14%+ p.a."),
-                cta1: t("Meer over Lama", "More about Lama"),
-                to: "/fondsen/lama" as const,
-                factsheet: "Lama Factsheet",
-              },
-            ].map((f) => (
-              <div key={f.tag} className="panel p-8 flex flex-col">
-                <div className="text-xs uppercase tracking-widest text-primary">{f.tag}</div>
-                <h3 className="mt-4 text-3xl font-semibold leading-tight">{f.title}</h3>
-                <p className="mt-4 text-sm text-muted-foreground flex-1">{f.stats}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <Link to={f.to} className="btn-primary !py-2.5 !px-4 text-xs">
-                    {f.cta1} →
-                  </Link>
-                  <button
-                    data-tf-popup={TYPEFORM_DOC_ID}
-                    className="btn-ghost !py-2.5 !px-4 text-xs"
-                  >
-                    {t("Download factsheet", "Download factsheet")}
-                  </button>
-                </div>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {/* Lacuna */}
+            <div className="panel p-8 flex flex-col">
+              <div className="text-xs uppercase tracking-widest text-primary">Lacuna · Leasehold</div>
+              <h3 className="mt-4 text-3xl font-semibold leading-tight">{t("Built to compound.", "Built to compound.")}</h3>
+              <p className="mt-4 text-sm text-muted-foreground">
+                {t(
+                  "Short-stay units via leasehold in Belgisch Limburg. Bewezen operating systeem. 25+ units actief.",
+                  "Short-stay units via leasehold in Belgian Limburg. Proven operating system. 25+ active units.",
+                )}
+              </p>
+              <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+                {t("12%+ target · €5M gecommitteerd · Min. €100.000", "12%+ target · €5M committed · Min. €100,000")}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Link to="/fondsen/lacuna" className="btn-primary !py-2.5 !px-4 text-xs">
+                  {t("Meer over Lacuna", "More about Lacuna")} →
+                </Link>
+                <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost !py-2.5 !px-4 text-xs">
+                  {t("Download factsheet", "Download factsheet")}
+                </button>
               </div>
-            ))}
+            </div>
+
+            {/* Lama */}
+            <div className="panel p-8 flex flex-col">
+              <div className="text-xs uppercase tracking-widest text-primary">Lama · Freehold</div>
+              <h3 className="mt-4 text-3xl font-semibold leading-tight">{t("Built to compound.", "Built to compound.")}</h3>
+              <p className="mt-4 text-sm text-muted-foreground">
+                {t(
+                  "Premium groepsverblijven met directe eigendom. Inkopen op Belgische kostenbasis, verhuren aan Nederlandse gasten.",
+                  "Premium group stays in direct ownership. Acquire at Belgian cost base, rent to Dutch guests.",
+                )}
+              </p>
+              <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+                {t("14%+ target · €2M pilot · Min. €100.000", "14%+ target · €2M pilot · Min. €100,000")}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Link to="/fondsen/lama" className="btn-primary !py-2.5 !px-4 text-xs">
+                  {t("Meer over Lama", "More about Lama")} →
+                </Link>
+                <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost !py-2.5 !px-4 text-xs">
+                  {t("Download factsheet", "Download factsheet")}
+                </button>
+              </div>
+            </div>
+
+            {/* Residentieel — coming soon */}
+            <div className="panel p-8 flex flex-col opacity-50">
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                {t("Residentieel · Coming soon", "Residential · Coming soon")}
+              </div>
+              <h3 className="mt-4 text-3xl font-semibold leading-tight text-muted-foreground">
+                {t("Volgende fase.", "Next phase.")}
+              </h3>
+              <p className="mt-4 text-sm text-muted-foreground">
+                {t(
+                  "Residentieel vastgoed in het grensgebied NL–BE. Meer details volgen.",
+                  "Residential real estate in the NL–BE border region. More details to follow.",
+                )}
+              </p>
+            </div>
           </div>
+
 
           <p className="mt-10 text-xs text-muted-foreground">
             {t(
