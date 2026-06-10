@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-export const Route = createFileRoute("/fondsen")({
+export const Route = createFileRoute("/fondsen/")({
   component: FondsenPage,
   head: () => ({
     meta: [

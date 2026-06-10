@@ -12,10 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as InvestmentsRouteImport } from './routes/investments'
-import { Route as FondsenRouteImport } from './routes/fondsen'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CasussenRouteImport } from './routes/casussen'
+import { Route as FondsenRouteRouteImport } from './routes/fondsen.route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FondsenIndexRouteImport } from './routes/fondsen.index'
 import { Route as FondsenLamaRouteImport } from './routes/fondsen.lama'
 import { Route as FondsenLacunaRouteImport } from './routes/fondsen.lacuna'
 
@@ -34,11 +35,6 @@ const InvestmentsRoute = InvestmentsRouteImport.update({
   path: '/investments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FondsenRoute = FondsenRouteImport.update({
-  id: '/fondsen',
-  path: '/fondsen',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -49,97 +45,111 @@ const CasussenRoute = CasussenRouteImport.update({
   path: '/casussen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FondsenRouteRoute = FondsenRouteRouteImport.update({
+  id: '/fondsen',
+  path: '/fondsen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FondsenIndexRoute = FondsenIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FondsenRouteRoute,
+} as any)
 const FondsenLamaRoute = FondsenLamaRouteImport.update({
   id: '/lama',
   path: '/lama',
-  getParentRoute: () => FondsenRoute,
+  getParentRoute: () => FondsenRouteRoute,
 } as any)
 const FondsenLacunaRoute = FondsenLacunaRouteImport.update({
   id: '/lacuna',
   path: '/lacuna',
-  getParentRoute: () => FondsenRoute,
+  getParentRoute: () => FondsenRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/fondsen': typeof FondsenRouteRouteWithChildren
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/fondsen/lacuna': typeof FondsenLacunaRoute
   '/fondsen/lama': typeof FondsenLamaRoute
+  '/fondsen/': typeof FondsenIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/fondsen/lacuna': typeof FondsenLacunaRoute
   '/fondsen/lama': typeof FondsenLamaRoute
+  '/fondsen': typeof FondsenIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/fondsen': typeof FondsenRouteRouteWithChildren
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/fondsen/lacuna': typeof FondsenLacunaRoute
   '/fondsen/lama': typeof FondsenLamaRoute
+  '/fondsen/': typeof FondsenIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/fondsen'
     | '/casussen'
     | '/contact'
-    | '/fondsen'
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
     | '/fondsen/lacuna'
     | '/fondsen/lama'
+    | '/fondsen/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/casussen'
     | '/contact'
-    | '/fondsen'
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
     | '/fondsen/lacuna'
     | '/fondsen/lama'
+    | '/fondsen'
   id:
     | '__root__'
     | '/'
+    | '/fondsen'
     | '/casussen'
     | '/contact'
-    | '/fondsen'
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
     | '/fondsen/lacuna'
     | '/fondsen/lama'
+    | '/fondsen/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FondsenRouteRoute: typeof FondsenRouteRouteWithChildren
   CasussenRoute: typeof CasussenRoute
   ContactRoute: typeof ContactRoute
-  FondsenRoute: typeof FondsenRouteWithChildren
   InvestmentsRoute: typeof InvestmentsRoute
   OverOnsRoute: typeof OverOnsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -168,13 +178,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/fondsen': {
-      id: '/fondsen'
-      path: '/fondsen'
-      fullPath: '/fondsen'
-      preLoaderRoute: typeof FondsenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -189,6 +192,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CasussenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fondsen': {
+      id: '/fondsen'
+      path: '/fondsen'
+      fullPath: '/fondsen'
+      preLoaderRoute: typeof FondsenRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -196,41 +206,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fondsen/': {
+      id: '/fondsen/'
+      path: '/'
+      fullPath: '/fondsen/'
+      preLoaderRoute: typeof FondsenIndexRouteImport
+      parentRoute: typeof FondsenRouteRoute
+    }
     '/fondsen/lama': {
       id: '/fondsen/lama'
       path: '/lama'
       fullPath: '/fondsen/lama'
       preLoaderRoute: typeof FondsenLamaRouteImport
-      parentRoute: typeof FondsenRoute
+      parentRoute: typeof FondsenRouteRoute
     }
     '/fondsen/lacuna': {
       id: '/fondsen/lacuna'
       path: '/lacuna'
       fullPath: '/fondsen/lacuna'
       preLoaderRoute: typeof FondsenLacunaRouteImport
-      parentRoute: typeof FondsenRoute
+      parentRoute: typeof FondsenRouteRoute
     }
   }
 }
 
-interface FondsenRouteChildren {
+interface FondsenRouteRouteChildren {
   FondsenLacunaRoute: typeof FondsenLacunaRoute
   FondsenLamaRoute: typeof FondsenLamaRoute
+  FondsenIndexRoute: typeof FondsenIndexRoute
 }
 
-const FondsenRouteChildren: FondsenRouteChildren = {
+const FondsenRouteRouteChildren: FondsenRouteRouteChildren = {
   FondsenLacunaRoute: FondsenLacunaRoute,
   FondsenLamaRoute: FondsenLamaRoute,
+  FondsenIndexRoute: FondsenIndexRoute,
 }
 
-const FondsenRouteWithChildren =
-  FondsenRoute._addFileChildren(FondsenRouteChildren)
+const FondsenRouteRouteWithChildren = FondsenRouteRoute._addFileChildren(
+  FondsenRouteRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FondsenRouteRoute: FondsenRouteRouteWithChildren,
   CasussenRoute: CasussenRoute,
   ContactRoute: ContactRoute,
-  FondsenRoute: FondsenRouteWithChildren,
   InvestmentsRoute: InvestmentsRoute,
   OverOnsRoute: OverOnsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
