@@ -314,7 +314,8 @@ function Home() {
                   "Freehold — real estate as collateral, above-market returns through STR operation. A fund that reinvests.",
                 )}
               </p>
-              <p className="mt-3 text-sm font-semibold text-primary">Built to compound.</p>
+              <p className="mt-3 text-sm italic text-primary">Don't just buy the house. Buy the system.</p>
+              <p className="mt-2 text-sm font-semibold text-primary">Built to compound.</p>
               <p className="mt-6 text-xs uppercase tracking-widest text-muted-foreground">
                 {t("14%+ target · €2M pilot · Min. €100.000", "14%+ target · €2M pilot · Min. €100,000")}
               </p>

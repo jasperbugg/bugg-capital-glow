@@ -171,6 +171,61 @@ function LamaPage() {
         </div>
       </section>
 
+      {/* DRIE LAGEN ARBITRAGE */}
+      <section className="section-blue border-b border-border">
+        <div className="container mx-auto px-6 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <div className="eyebrow">{t("De edge", "The edge")}</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-semibold">
+                {t(
+                  <>Drie lagen<br /><span className="italic-accent">arbitrage.</span></>,
+                  <>Three layers of<br /><span className="italic-accent">arbitrage.</span></>,
+                )}
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              {t(
+                "Niet één voordeel, maar drie tegelijk — gestapeld op hetzelfde asset.",
+                "Not one edge, but three at once — stacked on the same asset.",
+              )}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                k: t("Geografie", "Geography"),
+                v: t(
+                  "Belgische aankoopprijzen. Nederlandse betalingsbereidheid. Voor de gast is de grens irrelevant.",
+                  "Belgian acquisition prices. Dutch willingness to pay. To the guest the border is irrelevant.",
+                ),
+              },
+              {
+                k: t("Duratie", "Duration"),
+                v: t(
+                  "De markt prijst deze panden als woning. Hun werkelijke waarde ligt in short-stay exploitatie.",
+                  "The market prices these properties as homes. Their true utility is as short-stay hospitality assets.",
+                ),
+              },
+              {
+                k: t("Digitalisering", "Digitalisation"),
+                v: t(
+                  "Specialstays' operating systeem — dynamic pricing, interieurstandaard, reviewbeheer — tilt NOI en NAV.",
+                  "Specialstays' operating system — dynamic pricing, interior standard, review management — lifts NOI and NAV.",
+                ),
+              },
+            ].map((b) => (
+              <div key={b.k} className="panel p-8">
+                <div className="text-xs uppercase tracking-widest text-primary">{b.k}</div>
+                <p className="mt-4 text-foreground leading-relaxed">{b.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* IN ONTWIKKELING */}
       <section className="border-b border-border">
         <div className="container mx-auto px-6 py-24">
@@ -201,6 +256,124 @@ function LamaPage() {
           </div>
         </div>
       </section>
+
+      {/* 4-STEP MACHINE */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-6 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <div className="eyebrow">{t("Hoe het werkt", "How it works")}</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-semibold leading-tight">
+                {t(
+                  <>Don't just buy the house.<br /><span className="italic-accent">Buy the system.</span></>,
+                  <>Don't just buy the house.<br /><span className="italic-accent">Buy the system.</span></>,
+                )}
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              {t(
+                "Een repeatable machine in vier stappen. Geen one-off deal — een systeem dat compoundt.",
+                "A repeatable machine in four steps. Not a one-off deal — a system that compounds.",
+              )}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+            {[
+              { n: "01", k: "Buy", v: t("Acquireren van large-format vastgoed op Belgische kostenbasis.", "Acquire large-format assets at Belgian purchase prices.") },
+              { n: "02", k: "Improve", v: t("Alleen upgraden wat NOI en gastbeleving verhoogt.", "Upgrade only what increases guest value and NOI.") },
+              { n: "03", k: "Execute", v: t("Repeatable operating systeem: pricing, bezetting, reviews, kosten.", "Repeatable operating system: pricing, occupancy, reviews, cost control.") },
+              { n: "04", k: "Compound", v: t("Cashflow herinvesteren om de portefeuille te schalen.", "Reinvest gains to scale the portfolio.") },
+            ].map((s) => (
+              <div key={s.n} className="bg-background p-8">
+                <div className="text-xs uppercase tracking-widest text-primary">{s.n}</div>
+                <h3 className="mt-3 text-2xl font-semibold">{s.k}</h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* UNIT ECONOMICS */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-6 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <div className="eyebrow">Unit economics</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-semibold leading-tight">
+                {t(
+                  <>Robuuste economics op<br /><span className="italic-accent">conservatieve baselines.</span></>,
+                  <>Robust economics at<br /><span className="italic-accent">conservative baselines.</span></>,
+                )}
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              {t(
+                "Conservatief gemodelleerd op bewezen bezettingsniveaus, niet op blue-sky scenario's.",
+                "Conservatively modelled on proven occupancy levels, not on blue-sky scenarios.",
+              )}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border">
+            {[
+              { v: "18", l: t("Gasten per pand", "Guests per asset") },
+              { v: "€40–60", l: t("Tarief per persoon", "Rate per person") },
+              { v: "€700–1K", l: t("Target ADR / nacht", "Target ADR / night") },
+              { v: "55–60%", l: t("Bezetting", "Occupancy") },
+              { v: "~€60K", l: t("Gestabiliseerde NOI / jaar", "Stabilised NOI / year") },
+            ].map((k) => (
+              <div key={k.l} className="bg-background p-6">
+                <div className="text-2xl md:text-3xl font-bold text-primary">{k.v}</div>
+                <div className="mt-2 text-[11px] uppercase tracking-widest text-muted-foreground">{k.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RE-RATING MATH */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="eyebrow">Re-rating</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-semibold leading-tight">
+              {t(
+                <>Waarom vroeg<br /><span className="italic-accent">kapitaal wint.</span></>,
+                <>Why early<br /><span className="italic-accent">capital wins.</span></>,
+              )}
+            </h2>
+            <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                <span className="text-foreground font-semibold">{t("Investeringsfase", "Investment phase")}</span> — {t("aankoop + renovatie als risk capital.", "cost plus renovation as risk capital.")}
+              </p>
+              <p>
+                <span className="text-foreground font-semibold">{t("Gestabiliseerde fase", "Stabilised phase")}</span> — {t("gewaardeerd op yield. ~5,5% cap rate als markt-benchmark.", "valued on yield. ~5.5% cap rate as the market benchmark.")}
+              </p>
+            </div>
+          </div>
+
+          <div className="panel p-10">
+            <div className="text-xs uppercase tracking-widest text-muted-foreground">
+              {t("De rekensom", "The math")}
+            </div>
+            <div className="mt-6 text-3xl md:text-4xl font-semibold leading-tight">
+              ~€60K NOI <span className="text-muted-foreground">÷</span> 5,5%
+              <br />
+              <span className="text-muted-foreground">=</span> <span className="text-primary">~€1M+</span>
+              <span className="block text-base font-normal text-muted-foreground mt-1">{t("waardering per asset", "valuation per asset")}</span>
+            </div>
+            <p className="mt-8 text-sm text-muted-foreground leading-relaxed">
+              {t(
+                "Wie nu instapt vangt de eerste re-rating zodra het asset overgaat van renovatie-risico naar gestabiliseerde NOI.",
+                "Investing now captures the first re-rating as the asset moves from renovation risk to stabilised NOI.",
+              )}
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       {/* PIPELINE */}
       <section className="border-b border-border">
@@ -245,6 +418,50 @@ function LamaPage() {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* FUND STRUCTURE & LIQUIDITY */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-6 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <div className="eyebrow">{t("Fondsstructuur", "Fund structure")}</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-semibold leading-tight">
+                {t(
+                  <>We verkopen units in het fonds.<br /><span className="italic-accent">Niet de stenen.</span></>,
+                  <>We sell units in the fund.<br /><span className="italic-accent">Not the bricks.</span></>,
+                )}
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              {t(
+                "De gearbitreerde waarde zit in het systeem, niet in het individuele pand. De fondsstructuur is hoe die waarde liquide wordt.",
+                "The arbitraged value lives in the system, not in the individual property. The fund structure is how that value becomes liquid.",
+              )}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="panel p-8">
+              <div className="text-xs uppercase tracking-widest text-primary">{t("Het probleem", "The problem")}</div>
+              <p className="mt-4 text-foreground leading-relaxed">
+                {t(
+                  "Wie het fysieke huis koopt, koopt het als woning — niet als operating asset. De buyer pool kan onze yields niet repliceren en betaalt niet voor de gearbitreerde waarde.",
+                  "Anyone buying the physical house buys it as a home — not as an operating asset. That buyer pool cannot replicate our yields and will not pay for the arbitraged value.",
+                )}
+              </p>
+            </div>
+            <div className="panel p-8">
+              <div className="text-xs uppercase tracking-widest text-primary">{t("De oplossing", "The solution")}</div>
+              <p className="mt-4 text-foreground leading-relaxed">
+                {t(
+                  "Een fondsstructuur vangt die operator-premie. Investeerders kopen participaties in het systeem, met een duidelijk pad naar liquiditeit via unit sales — niet via verkoop van individuele panden.",
+                  "A fund structure captures that operator premium. Investors buy participation in the system, with a clear path to liquidity via unit sales — not via the sale of individual properties.",
+                )}
+              </p>
+            </div>
           </div>
         </div>
       </section>
