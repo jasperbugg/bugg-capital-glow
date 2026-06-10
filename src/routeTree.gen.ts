@@ -16,6 +16,8 @@ import { Route as FondsenRouteImport } from './routes/fondsen'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CasussenRouteImport } from './routes/casussen'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FondsenLamaRouteImport } from './routes/fondsen.lama'
+import { Route as FondsenLacunaRouteImport } from './routes/fondsen.lacuna'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -52,34 +54,50 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FondsenLamaRoute = FondsenLamaRouteImport.update({
+  id: '/lama',
+  path: '/lama',
+  getParentRoute: () => FondsenRoute,
+} as any)
+const FondsenLacunaRoute = FondsenLacunaRouteImport.update({
+  id: '/lacuna',
+  path: '/lacuna',
+  getParentRoute: () => FondsenRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRoute
+  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/fondsen/lacuna': typeof FondsenLacunaRoute
+  '/fondsen/lama': typeof FondsenLamaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRoute
+  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/fondsen/lacuna': typeof FondsenLacunaRoute
+  '/fondsen/lama': typeof FondsenLamaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRoute
+  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/fondsen/lacuna': typeof FondsenLacunaRoute
+  '/fondsen/lama': typeof FondsenLamaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +109,8 @@ export interface FileRouteTypes {
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
+    | '/fondsen/lacuna'
+    | '/fondsen/lama'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +120,8 @@ export interface FileRouteTypes {
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
+    | '/fondsen/lacuna'
+    | '/fondsen/lama'
   id:
     | '__root__'
     | '/'
@@ -109,13 +131,15 @@ export interface FileRouteTypes {
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
+    | '/fondsen/lacuna'
+    | '/fondsen/lama'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CasussenRoute: typeof CasussenRoute
   ContactRoute: typeof ContactRoute
-  FondsenRoute: typeof FondsenRoute
+  FondsenRoute: typeof FondsenRouteWithChildren
   InvestmentsRoute: typeof InvestmentsRoute
   OverOnsRoute: typeof OverOnsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -172,14 +196,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fondsen/lama': {
+      id: '/fondsen/lama'
+      path: '/lama'
+      fullPath: '/fondsen/lama'
+      preLoaderRoute: typeof FondsenLamaRouteImport
+      parentRoute: typeof FondsenRoute
+    }
+    '/fondsen/lacuna': {
+      id: '/fondsen/lacuna'
+      path: '/lacuna'
+      fullPath: '/fondsen/lacuna'
+      preLoaderRoute: typeof FondsenLacunaRouteImport
+      parentRoute: typeof FondsenRoute
+    }
   }
 }
+
+interface FondsenRouteChildren {
+  FondsenLacunaRoute: typeof FondsenLacunaRoute
+  FondsenLamaRoute: typeof FondsenLamaRoute
+}
+
+const FondsenRouteChildren: FondsenRouteChildren = {
+  FondsenLacunaRoute: FondsenLacunaRoute,
+  FondsenLamaRoute: FondsenLamaRoute,
+}
+
+const FondsenRouteWithChildren =
+  FondsenRoute._addFileChildren(FondsenRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CasussenRoute: CasussenRoute,
   ContactRoute: ContactRoute,
-  FondsenRoute: FondsenRoute,
+  FondsenRoute: FondsenRouteWithChildren,
   InvestmentsRoute: InvestmentsRoute,
   OverOnsRoute: OverOnsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
