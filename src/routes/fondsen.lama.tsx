@@ -422,6 +422,50 @@ function LamaPage() {
         </div>
       </section>
 
+      {/* FUND STRUCTURE & LIQUIDITY */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-6 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <div className="eyebrow">{t("Fondsstructuur", "Fund structure")}</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-semibold leading-tight">
+                {t(
+                  <>We verkopen units in het fonds.<br /><span className="italic-accent">Niet de stenen.</span></>,
+                  <>We sell units in the fund.<br /><span className="italic-accent">Not the bricks.</span></>,
+                )}
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              {t(
+                "De gearbitreerde waarde zit in het systeem, niet in het individuele pand. De fondsstructuur is hoe die waarde liquide wordt.",
+                "The arbitraged value lives in the system, not in the individual property. The fund structure is how that value becomes liquid.",
+              )}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="panel p-8">
+              <div className="text-xs uppercase tracking-widest text-primary">{t("Het probleem", "The problem")}</div>
+              <p className="mt-4 text-foreground leading-relaxed">
+                {t(
+                  "Wie het fysieke huis koopt, koopt het als woning — niet als operating asset. De buyer pool kan onze yields niet repliceren en betaalt niet voor de gearbitreerde waarde.",
+                  "Anyone buying the physical house buys it as a home — not as an operating asset. That buyer pool cannot replicate our yields and will not pay for the arbitraged value.",
+                )}
+              </p>
+            </div>
+            <div className="panel p-8">
+              <div className="text-xs uppercase tracking-widest text-primary">{t("De oplossing", "The solution")}</div>
+              <p className="mt-4 text-foreground leading-relaxed">
+                {t(
+                  "Een fondsstructuur vangt die operator-premie. Investeerders kopen participaties in het systeem, met een duidelijk pad naar liquiditeit via unit sales — niet via verkoop van individuele panden.",
+                  "A fund structure captures that operator premium. Investors buy participation in the system, with a clear path to liquidity via unit sales — not via the sale of individual properties.",
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* BUILT TO COMPOUND */}
       <section>
         <div className="container mx-auto px-6 py-28 grid md:grid-cols-2 gap-12">
