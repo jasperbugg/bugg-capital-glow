@@ -174,6 +174,53 @@ function Contact() {
           </div>
         </div>
       </section>
+
+      {/* INSTAGRAM */}
+      <section className="section-blue border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
+          <div className="eyebrow mb-12">Instagram</div>
+
+          <div className="panel p-8 md:p-10">
+            <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-10 items-start">
+              <div className="w-24 h-24 rounded-full bg-primary/15 text-primary flex items-center justify-center text-3xl font-bold">
+                B
+              </div>
+              <div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <div className="text-xl font-semibold">bugg.capital</div>
+                  <a
+                    href="https://instagram.com/bugg.capital"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-ghost text-xs"
+                  >
+                    Volg op Instagram <ArrowRight size={14} />
+                  </a>
+                </div>
+                <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted-foreground">
+                  <span><strong className="text-foreground">20</strong> berichten</span>
+                  <span><strong className="text-foreground">276</strong> volgers</span>
+                  <span><strong className="text-foreground">578</strong> volgend</span>
+                </div>
+                <div className="mt-4 text-sm leading-relaxed">
+                  <div className="font-semibold">Platform-driven real asset investing</div>
+                  <div className="text-muted-foreground">📍 Lanaken — Maastricht (BE/NL)</div>
+                  <div className="text-muted-foreground">BUILT.TO.COMPOUND.</div>
+                  <div className="text-muted-foreground">🤝 By Invitation</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 grid grid-cols-3 md:grid-cols-6 gap-1">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="aspect-square bg-muted relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/0" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
