@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Linkedin, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import buggLogoWhite from "@/assets/bugg-logo-white.png.asset.json";
 
 export function SiteFooter() {
   const { t } = useLanguage();
@@ -8,12 +9,11 @@ export function SiteFooter() {
     <footer className="border-t border-border mt-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-semibold tracking-tight lowercase">
-              bugg<span className="text-primary">.</span>
-            </span>
+          <div className="flex items-center gap-3">
+            <img src={buggLogoWhite.url} alt="BUGG" className="h-8 w-auto" />
             <span className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Capital</span>
           </div>
+
           <p className="mt-4 text-sm text-muted-foreground max-w-sm">
             {t(
               "Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen, eigen capital erin. Opgericht 2012.",
