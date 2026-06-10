@@ -27,6 +27,14 @@ function Home() {
     { value: "12–14%", label: t("Target rendement p.j.", "Target return p.a.") },
   ];
 
+  const trackRecord = [
+    { year: "2012", name: "SvB Group", tag: t("E-commerce platforms", "E-commerce platforms") },
+    { year: "2016", name: "Colengo", tag: t("SaaS voor MKB", "SaaS for SMBs") },
+    { year: "2018", name: "Fangage", tag: t("Creator-platform", "Creator platform") },
+    { year: "2019", name: "Specialstays", tag: t("STR operating platform", "STR operating platform") },
+    { year: "2024", name: "Lacuna & Lama", tag: t("Vastgoedfondsen", "Real estate funds") },
+  ];
+
   const phases = [
     {
       num: "1",
