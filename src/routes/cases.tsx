@@ -72,8 +72,6 @@ const cases: Case[] = [
   },
 ];
 
-// Fix Windmill case appreciation
-cases[1].appreciation = "n.t.b.";
 
 function ImagePlaceholder({ label, src, alt }: { label: string; src?: string | null; alt?: string }) {
   if (src) {
