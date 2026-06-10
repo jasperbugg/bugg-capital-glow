@@ -187,6 +187,7 @@ function Home() {
                 title: t("Structureel inkomen.", "Structural income."),
                 stats: t("€5M gecommitteerd · 25+ units · 12%+ p.j.", "€5M committed · 25+ units · 12%+ p.a."),
                 cta1: t("Meer over Lacuna", "More about Lacuna"),
+                to: "/fondsen/lacuna" as const,
                 factsheet: "Lacuna Factsheet",
               },
               {
@@ -194,6 +195,7 @@ function Home() {
                 title: t("Vermogen dat compoundt.", "Wealth that compounds."),
                 stats: t("€2M pilot · 2 premium assets · 14%+ p.j.", "€2M pilot · 2 premium assets · 14%+ p.a."),
                 cta1: t("Meer over Lama", "More about Lama"),
+                to: "/fondsen/lama" as const,
                 factsheet: "Lama Factsheet",
               },
             ].map((f) => (
@@ -202,7 +204,7 @@ function Home() {
                 <h3 className="mt-4 text-3xl font-semibold leading-tight">{f.title}</h3>
                 <p className="mt-4 text-sm text-muted-foreground flex-1">{f.stats}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <Link to="/fondsen" className="btn-primary !py-2.5 !px-4 text-xs">
+                  <Link to={f.to} className="btn-primary !py-2.5 !px-4 text-xs">
                     {f.cta1} →
                   </Link>
                   <button
@@ -252,8 +254,8 @@ function Home() {
                 {t("Download whitepaper", "Download whitepaper")}
               </button>
             </div>
-            <Link to="/casussen" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
-              {t("Bekijk de portefeuille", "View portfolio")} →
+            <Link to="/fondsen" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
+              {t("Bekijk de fondsen", "View our funds")} →
             </Link>
           </div>
         </div>
