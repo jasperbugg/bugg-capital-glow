@@ -12,10 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as InvestmentsRouteImport } from './routes/investments'
-import { Route as FondsenRouteImport } from './routes/fondsen'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CasussenRouteImport } from './routes/casussen'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FondsenIndexRouteImport } from './routes/fondsen.index'
 import { Route as FondsenLamaRouteImport } from './routes/fondsen.lama'
 import { Route as FondsenLacunaRouteImport } from './routes/fondsen.lacuna'
 
@@ -34,11 +34,6 @@ const InvestmentsRoute = InvestmentsRouteImport.update({
   path: '/investments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FondsenRoute = FondsenRouteImport.update({
-  id: '/fondsen',
-  path: '/fondsen',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -52,6 +47,11 @@ const CasussenRoute = CasussenRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FondsenIndexRoute = FondsenIndexRouteImport.update({
+  id: '/fondsen/',
+  path: '/fondsen/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FondsenLamaRoute = FondsenLamaRouteImport.update({
@@ -69,35 +69,35 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/fondsen/lacuna': typeof FondsenLacunaRoute
   '/fondsen/lama': typeof FondsenLamaRoute
+  '/fondsen/': typeof FondsenIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/fondsen/lacuna': typeof FondsenLacunaRoute
   '/fondsen/lama': typeof FondsenLamaRoute
+  '/fondsen': typeof FondsenIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
-  '/fondsen': typeof FondsenRouteWithChildren
   '/investments': typeof InvestmentsRoute
   '/over-ons': typeof OverOnsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/fondsen/lacuna': typeof FondsenLacunaRoute
   '/fondsen/lama': typeof FondsenLamaRoute
+  '/fondsen/': typeof FondsenIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -105,44 +105,44 @@ export interface FileRouteTypes {
     | '/'
     | '/casussen'
     | '/contact'
-    | '/fondsen'
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
     | '/fondsen/lacuna'
     | '/fondsen/lama'
+    | '/fondsen/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/casussen'
     | '/contact'
-    | '/fondsen'
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
     | '/fondsen/lacuna'
     | '/fondsen/lama'
+    | '/fondsen'
   id:
     | '__root__'
     | '/'
     | '/casussen'
     | '/contact'
-    | '/fondsen'
     | '/investments'
     | '/over-ons'
     | '/sitemap.xml'
     | '/fondsen/lacuna'
     | '/fondsen/lama'
+    | '/fondsen/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CasussenRoute: typeof CasussenRoute
   ContactRoute: typeof ContactRoute
-  FondsenRoute: typeof FondsenRouteWithChildren
   InvestmentsRoute: typeof InvestmentsRoute
   OverOnsRoute: typeof OverOnsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  FondsenIndexRoute: typeof FondsenIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -168,13 +168,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/fondsen': {
-      id: '/fondsen'
-      path: '/fondsen'
-      fullPath: '/fondsen'
-      preLoaderRoute: typeof FondsenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -196,6 +189,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fondsen/': {
+      id: '/fondsen/'
+      path: '/fondsen'
+      fullPath: '/fondsen/'
+      preLoaderRoute: typeof FondsenIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/fondsen/lama': {
       id: '/fondsen/lama'
       path: '/lama'
@@ -213,28 +213,25 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface FondsenRouteChildren {
-  FondsenLacunaRoute: typeof FondsenLacunaRoute
-  FondsenLamaRoute: typeof FondsenLamaRoute
-}
-
-const FondsenRouteChildren: FondsenRouteChildren = {
-  FondsenLacunaRoute: FondsenLacunaRoute,
-  FondsenLamaRoute: FondsenLamaRoute,
-}
-
-const FondsenRouteWithChildren =
-  FondsenRoute._addFileChildren(FondsenRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CasussenRoute: CasussenRoute,
   ContactRoute: ContactRoute,
-  FondsenRoute: FondsenRouteWithChildren,
   InvestmentsRoute: InvestmentsRoute,
   OverOnsRoute: OverOnsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  FondsenIndexRoute: FondsenIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
