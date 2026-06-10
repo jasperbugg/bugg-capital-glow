@@ -122,6 +122,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <script src="//embed.typeform.com/next/embed.js" async></script>
       </body>
     </html>
   );
