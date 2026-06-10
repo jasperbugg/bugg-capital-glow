@@ -11,7 +11,6 @@ export function SiteFooter() {
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <img src={buggLogoWhite.url} alt="BUGG" className="h-8 w-auto" />
-            <span className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Capital</span>
           </div>
 
           <p className="mt-4 text-sm text-muted-foreground max-w-sm">
