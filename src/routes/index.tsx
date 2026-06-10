@@ -9,9 +9,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "BUGG Capital — From Code to Capital" },
-      { name: "description", content: "Investment holding in het grensgebied NL–BE. Van platformbedrijven naar vastgoedfondsen. 40+ panden. €7M gecommitteerd. Since 2012." },
+      { name: "description", content: "Investment holding in het grensgebied NL–BE. Van platformbedrijven naar vastgoedfondsen. Built to compound." },
       { property: "og:title", content: "BUGG Capital — From Code to Capital" },
-      { property: "og:description", content: "Van platformbedrijven naar vastgoedfondsen. Co-ownership in Belgisch short-stay vastgoed." },
+      { property: "og:description", content: "Van platformbedrijven naar vastgoedfondsen. Co-ownership in Belgisch short-stay vastgoed. Built to compound." },
     ],
   }),
   component: Home,
@@ -36,6 +36,15 @@ function Home() {
     { period: "2026", title: "Lama Fund", desc: t("Premium groepsverblijven", "Premium group stays") },
   ];
 
+  const flywheel = [
+    t("Data & locatieselectie", "Data & location selection"),
+    t("Aankoop op juiste prijs", "Acquisition at the right price"),
+    t("Renovatie & inrichting", "Renovation & interior"),
+    t("Specialstays-activatie", "Specialstays activation"),
+    t("Boven-markt exploitatie", "Above-market operation"),
+    t("Rendement & herinvestering", "Returns & reinvestment"),
+  ];
+
   return (
     <>
       {/* HERO */}
@@ -43,7 +52,7 @@ function Home() {
         <div className="absolute inset-0 bugg-grid bugg-grid-fade" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-28 md:py-40">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="eyebrow justify-center">From Code to Capital</div>
+            <div className="eyebrow justify-center">Built to compound</div>
             <h1 className="mt-8 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
               {t(
                 <>Wij bouwen platforms.<br /><span className="italic-accent">Nu bouwen wij aan vermogen.</span></>,
@@ -60,7 +69,7 @@ function Home() {
               <Link to="/fondsen" className="btn-primary">
                 {t("Bekijk de fondsen", "View our funds")} <ArrowRight size={16} />
               </Link>
-              <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost">
+              <button type="button" className="btn-ghost opacity-80 cursor-not-allowed">
                 {t("Download whitepaper", "Download whitepaper")}
               </button>
             </div>
@@ -116,7 +125,7 @@ function Home() {
         </div>
       </section>
 
-      {/* TIMELINE */}
+      {/* TIMELINE / TRACK RECORD */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
@@ -132,7 +141,6 @@ function Home() {
             </p>
           </div>
 
-          {/* Desktop horizontal */}
           <div className="hidden md:block overflow-x-auto -mx-6 lg:-mx-10 px-6 lg:px-10">
             <div className="relative flex gap-px bg-border min-w-max">
               {timeline.map((item) => (
@@ -145,7 +153,6 @@ function Home() {
             </div>
           </div>
 
-          {/* Mobile vertical */}
           <div className="md:hidden relative border-l border-border pl-6 space-y-8">
             {timeline.map((item) => (
               <div key={item.title} className="relative">
@@ -155,6 +162,70 @@ function Home() {
                 <div className="mt-1 text-sm text-muted-foreground">{item.desc}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FLYWHEEL */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
+          <div className="max-w-3xl">
+            <div className="eyebrow">{t("Het vliegwiel", "The flywheel")}</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+              {t("Het systeem achter het rendement.", "The system behind the returns.")}
+            </h2>
+            <p className="mt-6 text-muted-foreground leading-relaxed">
+              {t(
+                "Vastgoed is het product. Specialstays is de motor. Het systeem compoundt.",
+                "Real estate is the product. Specialstays is the engine. The system compounds.",
+              )}
+            </p>
+          </div>
+
+          {/* Desktop: circular flow */}
+          <div className="hidden lg:block relative mx-auto mt-16 w-[640px] h-[640px]">
+            <div className="absolute inset-10 rounded-full border-2 border-dashed border-primary/30" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center max-w-[220px]">
+                <div className="text-xs uppercase tracking-widest text-primary">Built to compound</div>
+                <div className="mt-2 text-lg font-semibold text-foreground">
+                  {t("Het BUGG-vliegwiel", "The BUGG flywheel")}
+                </div>
+              </div>
+            </div>
+            {flywheel.map((label, i) => {
+              const angle = (i / flywheel.length) * 2 * Math.PI - Math.PI / 2;
+              const r = 260;
+              const x = Math.cos(angle) * r;
+              const y = Math.sin(angle) * r;
+              return (
+                <div
+                  key={label}
+                  className="absolute w-44 -translate-x-1/2 -translate-y-1/2 text-center"
+                  style={{ left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)` }}
+                >
+                  <div className="mx-auto w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                    {i + 1}
+                  </div>
+                  <div className="mt-3 text-sm font-semibold text-foreground leading-tight">{label}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile / tablet: stacked steps */}
+          <div className="lg:hidden mt-12 relative border-l-2 border-primary/30 pl-8 space-y-8">
+            {flywheel.map((label, i) => (
+              <div key={label} className="relative">
+                <span className="absolute -left-[2.4rem] top-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                  {i + 1}
+                </span>
+                <div className="text-base font-semibold text-foreground">{label}</div>
+              </div>
+            ))}
+            <div className="pl-1 text-xs uppercase tracking-widest text-primary">
+              ↻ {t("Terug naar stap 1 — Built to compound", "Back to step 1 — Built to compound")}
+            </div>
           </div>
         </div>
       </section>
@@ -178,12 +249,7 @@ function Home() {
                 "Specialstays is the operating platform BUGG Capital built in-house. It manages pricing, distribution, guest experience and occupancy across every OTA simultaneously — Airbnb, Booking.com, VRBO and Expedia.",
               )}
             </p>
-            <p>
-              {t(
-                "Het is niet uitbesteed. Het is onze edge.",
-                "It is not outsourced. It is our edge.",
-              )}
-            </p>
+            <p>{t("Het is niet uitbesteed. Het is onze edge.", "It is not outsourced. It is our edge.")}</p>
             <div className="grid grid-cols-3 gap-px bg-border mt-8">
               {[
                 { v: "70%", l: t("Gem. bezetting", "Avg. occupancy") },
@@ -207,8 +273,8 @@ function Home() {
             <div className="eyebrow">Co-ownership</div>
             <h2 className="mt-6 text-4xl md:text-5xl font-bold">
               {t(
-                <>Twee fondsen.<br />Eén systeem.<br /><span className="italic-accent">Eigen capital erin.</span></>,
-                <>Two funds.<br />One system.<br /><span className="italic-accent">Our capital in it.</span></>,
+                <>Twee fondsen.<br />Eén systeem.<br /><span className="italic-accent">Built to compound.</span></>,
+                <>Two funds.<br />One system.<br /><span className="italic-accent">Built to compound.</span></>,
               )}
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
@@ -223,66 +289,61 @@ function Home() {
             {/* Lacuna */}
             <div className="panel p-8 flex flex-col">
               <div className="text-xs uppercase tracking-widest text-primary">Lacuna · Leasehold</div>
-              <h3 className="mt-4 text-3xl font-semibold leading-tight">{t("Built to compound.", "Built to compound.")}</h3>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="mt-4 text-base text-foreground leading-relaxed">
                 {t(
-                  "Short-stay units via leasehold in Belgisch Limburg. Bewezen operating systeem. 25+ units actief.",
-                  "Short-stay units via leasehold in Belgian Limburg. Proven operating system. 25+ active units.",
+                  "Leasehold — gericht op hoge bezetting, hoge nachtprijs en stabiele cashflow.",
+                  "Leasehold — focused on high occupancy, high nightly rate and stable cashflow.",
                 )}
               </p>
-              <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+              <p className="mt-3 text-sm font-semibold text-primary">Built to compound.</p>
+              <p className="mt-6 text-xs uppercase tracking-widest text-muted-foreground">
                 {t("12%+ target · €5M gecommitteerd · Min. €100.000", "12%+ target · €5M committed · Min. €100,000")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Link to="/fondsen/lacuna" className="btn-primary !py-2.5 !px-4 text-xs">
                   {t("Meer over Lacuna", "More about Lacuna")} →
                 </Link>
-                <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost !py-2.5 !px-4 text-xs">
-                  {t("Download factsheet", "Download factsheet")}
-                </button>
               </div>
             </div>
 
             {/* Lama */}
             <div className="panel p-8 flex flex-col">
               <div className="text-xs uppercase tracking-widest text-primary">Lama · Freehold</div>
-              <h3 className="mt-4 text-3xl font-semibold leading-tight">{t("Built to compound.", "Built to compound.")}</h3>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="mt-4 text-base text-foreground leading-relaxed">
                 {t(
-                  "Premium groepsverblijven met directe eigendom. Inkopen op Belgische kostenbasis, verhuren aan Nederlandse gasten.",
-                  "Premium group stays in direct ownership. Acquire at Belgian cost base, rent to Dutch guests.",
+                  "Freehold — vastgoed als onderpand, boven-markt-rendement via STR-exploitatie. Een fonds dat herinvesteert.",
+                  "Freehold — real estate as collateral, above-market returns through STR operation. A fund that reinvests.",
                 )}
               </p>
-              <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+              <p className="mt-3 text-sm font-semibold text-primary">Built to compound.</p>
+              <p className="mt-6 text-xs uppercase tracking-widest text-muted-foreground">
                 {t("14%+ target · €2M pilot · Min. €100.000", "14%+ target · €2M pilot · Min. €100,000")}
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Link to="/fondsen/lama" className="btn-primary !py-2.5 !px-4 text-xs">
                   {t("Meer over Lama", "More about Lama")} →
                 </Link>
-                <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost !py-2.5 !px-4 text-xs">
-                  {t("Download factsheet", "Download factsheet")}
-                </button>
               </div>
             </div>
 
             {/* Residentieel — coming soon */}
-            <div className="panel p-8 flex flex-col opacity-50">
+            <div className="panel p-8 flex flex-col opacity-70">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">
                 {t("Residentieel · Coming soon", "Residential · Coming soon")}
               </div>
-              <h3 className="mt-4 text-3xl font-semibold leading-tight text-muted-foreground">
-                {t("Volgende fase.", "Next phase.")}
-              </h3>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="mt-4 text-base text-foreground leading-relaxed">
                 {t(
-                  "Residentieel vastgoed in het grensgebied NL–BE. Meer details volgen.",
-                  "Residential real estate in the NL–BE border region. More details to follow.",
+                  "Verhuur van moderne woningen aan expats en professionals direct op de grens NL–BE. Meer details volgen.",
+                  "Rental of modern homes to expats and professionals right on the NL–BE border. More details to follow.",
                 )}
               </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <button type="button" className="btn-ghost !py-2.5 !px-4 text-xs cursor-not-allowed">
+                  {t("Meer info volgt →", "More info to follow →")}
+                </button>
+              </div>
             </div>
           </div>
-
 
           <p className="mt-10 text-xs text-muted-foreground">
             {t(
@@ -297,7 +358,7 @@ function Home() {
       <section className="section-blue">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-28 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="eyebrow">{t("Eerste stap", "First step")}</div>
+            <div className="eyebrow">Built to compound</div>
             <h2 className="mt-6 text-4xl md:text-5xl font-bold">
               {t(
                 <>Klaar voor<br /><span className="italic-accent">een gesprek?</span></>,
@@ -313,12 +374,9 @@ function Home() {
               )}
             </p>
             <div className="flex flex-wrap gap-3">
-              <button data-tf-popup={TYPEFORM_CALL_ID} className="btn-primary">
-                {t("Gesprek aanvragen", "Schedule a call")} <ArrowRight size={16} />
-              </button>
-              <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost">
-                {t("Download whitepaper", "Download whitepaper")}
-              </button>
+              <Link to="/contact" className="btn-primary">
+                {t("Contact opnemen", "Get in touch")} <ArrowRight size={16} />
+              </Link>
             </div>
             <Link to="/cases" className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
               {t("Bekijk de cases", "View cases")} →

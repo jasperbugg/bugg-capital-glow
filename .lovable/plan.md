@@ -1,100 +1,132 @@
-## Doel
-De hele site omzetten naar het officiële BUGG-palet: wit (#ffffff) als basis, BUGG-blauw (#145099) als accent en sectiekleur. Geen donker-navy meer. Alleen styling — geen wijzigingen aan routes, navigatie, of content.
+# Content & structuur update — BUGG site
 
-## Scope
-Alleen styling-bestanden en stijl-classes binnen bestaande components/routes. Geen pagina's, routes of teksten worden aangepast.
+Scope: alleen content en sectie-opbouw. Geen design-wijzigingen, geen navigatie-wijzigingen, geen automations/integraties. Alle CTA's die normaal naar een tool zouden gaan worden placeholder-buttons (`<button>` zonder handler, of `<a href="#">`). Volledig bilingual (NL/EN) via bestaande `useLanguage()` helper. Tagline **"Built to compound"** wordt overal consistent ingezet (hoofdletter B, rest lowercase).
 
 ---
 
-## 1. `src/styles.css` — kern van de herstijl
+## 1. Tagline-anker
 
-**Tokens herdefiniëren (light-mode als default):**
-- `--background: #ffffff`
-- `--foreground: #145099` (blauwe tekst op wit)
-- `--surface: #f5f7fa` (licht grijs voor subtiele secties)
-- `--surface-2: #ffffff`
-- `--primary: #145099`
-- `--primary-foreground: #ffffff`
-- `--muted: #f5f7fa`
-- `--muted-foreground: #145099` met lagere opacity-variant via aparte token (bv. `--muted-foreground: rgba(20,80,153,0.7)`)
-- `--border: rgba(20,80,153,0.1)`
-- `--card: #ffffff`, `--card-foreground: #145099`
-- `--ring: #145099`
-
-**Sectie-helpers (nieuwe utility classes):**
-- `.section-blue` → `background:#145099; color:#ffffff` (voor hero, fondsen, CTA-blokken)
-- `.section-white` → `background:#ffffff; color:#145099`
-- `.section-light` → `background:#f5f7fa; color:#145099`
-
-**Buttons herschrijven (geen faded/semi-transparante varianten):**
-- `.btn-primary` (default, op wit): `background:#145099; color:#ffffff; border:1px solid #145099`. Hover: iets donkerder blauw, geen opacity.
-- `.btn-outline` (op wit): transparant met `border:1px solid #145099` en tekst `#145099`.
-- `.btn-on-blue-primary` (op blauw): `background:#ffffff; color:#145099`. Hover: lichte tint, niet transparant.
-- `.btn-on-blue-secondary` (op blauw): transparant met `border:1px solid #ffffff` en witte tekst.
-- Bestaande `.btn-ghost` verwijderen of mappen naar de juiste outline-variant.
-
-**Hero opschonen:**
-- `.bugg-grid` en `.bugg-grid-fade` leegmaken (of declaraties verwijderen) zodat het decoratieve grid niet meer rendert.
-
-**Typografie:**
-- Google Fonts `Poppins` (400, 400 italic, 700, 800) toevoegen via `<link>` in `src/routes/__root.tsx` head — Tailwind v4 doet geen URL-import.
-- `--font-sans` en `--font-display` op `"Poppins", ui-sans-serif, system-ui, sans-serif` houden (al zo).
-- Globale h1/h2 regel: `font-weight:800; letter-spacing:-0.02em` (al gedeeltelijk aanwezig — versterken naar 800).
-- `.italic-accent` aanpassen: italic + `font-weight:400` met iets lagere opacity blauw of wit (afhankelijk van sectie via `currentColor`/inherit).
-
-**Eyebrow:**
-- Lijntje en tekst gebruiken `currentColor` zodat het werkt op zowel blauwe als witte secties.
-
-**Globale opschoning:**
-- Eventuele `shadow-*`, gradient-tokens en glow-effects verwijderen.
+Doorvoeren als slotzin/eyebrow op:
+- Home hero (eyebrow blijft, slotregel CTA-blok)
+- Lacuna hero + footer-sectie
+- Lama hero + nieuwe afsluitsectie (titel = "BUILT TO COMPOUND")
+- Fondsen-cards op home (zie §3)
+- Cases-pagina (eyebrow op closing)
 
 ---
 
-## 2. Component- en routestijl-aanpassingen (alleen classes, geen content)
+## 2. Homepagina — vliegwiel-sectie (nieuw, na track record)
 
-Bestanden waarin alleen `className`-waarden / sectie-wrappers worden bijgewerkt, geen markup-structuur of tekst:
+Nieuwe sectie in `src/routes/index.tsx`, geplaatst na het track-record-blok, vóór de closing CTA.
 
-- `src/components/SiteHeader.tsx`
-  - Nav-achtergrond `#ffffff`, tekst `#145099`, border-bottom `rgba(20,80,153,0.1)`, CTA-knop = `.btn-primary` (blauw/wit).
-- `src/components/SiteFooter.tsx`
-  - Wit of `#f5f7fa` achtergrond, blauwe tekst, border-top in dezelfde subtiele blauwe tint.
-- `src/routes/__root.tsx`
-  - Body-wrapper op wit; Poppins `<link>` toevoegen in head.
-- `src/routes/index.tsx`
-  - Hero-sectie krijgt `.section-blue` + verwijder `bugg-grid` wrappers.
-  - KPI-bar, "The Story", Timeline, Specialstays → `.section-white` of `.section-light` afwisselend.
-  - "Three Funds"-sectie → `.section-blue` (witte tekst, panels worden witte cards met blauwe tekst + duidelijke border).
-  - Closing CTA → `.section-blue`.
-  - Knoppen mappen naar correcte variant op basis van ondergrond.
-- `src/routes/fondsen.index.tsx`, `fondsen.lacuna.tsx`, `fondsen.lama.tsx`, `fondsen.route.tsx`
-  - Hero per fondspagina → `.section-blue`.
-  - Detailblokken → wit/licht grijs met blauwe tekst.
-- `src/routes/cases.tsx`, `casussen.tsx`, `investments.tsx`, `over-ons.tsx`, `contact.tsx`
-  - Achtergrond wit, tussensecties optioneel `#f5f7fa`, CTA-blokken `.section-blue`.
-- `src/components/WhitepaperModal.tsx`, `src/components/LanguageToggle.tsx`
-  - Dialog/toggle op wit met blauwe tekst en blauwe focusring.
-
-Geen teksten, links, route-config of navigatie-items worden gewijzigd.
+- Eyebrow: "Het vliegwiel"
+- Titel: "Het systeem achter het rendement."
+- Ondertitel: "Vastgoed is het product. Specialstays is de motor. Het systeem compoundt."
+- Visualisatie: 6 stappen in een cirkelvormige flow (desktop: ring met genummerde nodes + pijlen; mobile: verticale stapsgewijze lijst met connector-lijnen). Stappen:
+  1. Data & locatieselectie
+  2. Aankoop op juiste prijs
+  3. Renovatie & inrichting
+  4. Specialstays-activatie
+  5. Boven-markt exploitatie
+  6. Rendement & herinvestering → (terug naar 1)
+- Implementatie: pure CSS/SVG (geen extra libraries). Nodes als genummerde cirkels met label eronder; verbindingslijn loopt rond.
 
 ---
 
-## 3. Verificatie
+## 3. Homepagina — drie fondsen-cards aanpassen
 
-Na de styling-pass:
-- Build laten lopen (automatisch).
-- Preview checken op `/`, `/fondsen`, `/fondsen/lacuna`, `/fondsen/lama`, `/cases`, `/over-ons`, `/contact`:
-  - Geen donker-navy achtergrond meer zichtbaar.
-  - Hero / Fondsen / CTA = blauw met witte tekst.
-  - Overige secties = wit of licht grijs met blauwe tekst.
-  - Nav wit met subtiele border-bottom.
-  - Buttons altijd vol gekleurd, nooit faded.
-  - Poppins geladen (Network tab toont fonts.googleapis.com request).
+In `src/routes/index.tsx` de bestaande fondsen-cards vervangen met:
+
+- **Lacuna**: "Leasehold — gericht op hoge bezetting, hoge nachtprijs en stabiele cashflow. Built to compound."
+- **Lama**: "Freehold — vastgoed als onderpand, boven-markt-rendement via STR-exploitatie. Een fonds dat herinvesteert. Built to compound."
+- **Residentieel (Coming Soon)**: "Verhuur van moderne woningen aan expats en professionals direct op de grens NL–BE. Meer details volgen." + placeholder-button "Meer info volgt →" (geen link, geen handler, `disabled`-stijl behouden zoals nu).
+
+Geen email-veld, geen externe links.
+
+---
+
+## 4. /fondsen/lacuna
+
+In `src/routes/fondsen.lacuna.tsx`:
+
+### a. FAQ-sectie (nieuw, accordion via bestaande `@/components/ui/accordion`)
+Vier vragen:
+1. Wat betekent leasehold in de context van Lacuna?
+2. Wat is de lockup-periode en hoe werkt uittreding?
+3. Welk rendement wordt nagestreefd en hoe wordt het uitgekeerd?
+4. Wat is de minimale deelname en voor wie is dit fonds bedoeld?
+
+### b. Case studies — uniforme structuur
+Vijf items, elk met:
+- Drie image slots naast elkaar (exterior / voor / na) → placeholder-blokken (`<div className="aspect-[4/3] bg-[var(--surface)] border border-border flex items-center justify-center text-xs uppercase tracking-widest text-muted-foreground">[Exterior]</div>` etc.) wanneer er geen foto is.
+- Feitentabel: Locatie & type · Jaar aankoop · Waardestijging · Rendement per jaar
+- Korte inleidende tekst
+- Voorbeelden 1–4: concrete cases (Zonhoven 4p-bungalow, Houthalen, Hechtel-Eksel, Maasmechelen — placeholder cijfers indien onbekend).
+- **Voorbeeld 5**: geen foto's, alleen tekst "Volledig portfolio beschikbaar via de dataroom — toegang op aanvraag." + placeholder-button "Dataroom aanvragen →".
+
+### c. Afsluiting "VAN AANKOOP TOT OPLEVERING"
+Nieuwe sectie net vóór de bestaande Dataroom CTA met de opgegeven tekst.
+
+---
+
+## 5. /fondsen/lama
+
+In `src/routes/fondsen.lama.tsx`:
+
+### a. FAQ (4 vragen, freehold/groepsverblijven/compounding-georiënteerd)
+1. Hoe verschilt freehold van leasehold binnen BUGG?
+2. Waarom groepsverblijven en niet reguliere short-stay?
+3. Hoe werkt het compounding-model in Lama?
+4. Wat is de lockup en deelnamedrempel?
+
+### b. "In ontwikkeling" — bestaande cases hergebruiken
+The Windmill + Villa Grimbia → image slots als placeholder-blokken, met label "Locatie in ontwikkeling — meer info volgt."
+
+### c. Pipeline-sectie
+Tekst: "We hebben X objecten in de pijplijn. Interesse? Neem contact op voor de meest actuele stand van zaken." + button "Contact opnemen →" (link naar `/contact` via `<Link to="/contact">`).
+
+### d. Afsluitsectie "BUILT TO COMPOUND"
+Volledige opgegeven tekst, vervangt of staat boven de huidige Dataroom CTA.
+
+---
+
+## 6. /over-ons — twee nieuwe secties
+
+Toevoegen in `src/routes/over-ons.tsx`, na de team-sectie, vóór "Structuur & partners":
+
+- **Onze visie** — titel "Wij zien een markt die anderen nog niet begrijpen." + opgegeven tekst.
+- **Onze missie** — titel "Lokaal verankerd. Professioneel gebouwd." + opgegeven tekst.
+
+Beide als tweekoloms layout in lijn met bestaande secties op die pagina.
+
+---
+
+## 7. /cases — structuur uniformiseren
+
+In `src/routes/cases.tsx` elke casus omzetten naar uniform blok:
+- Drie image slots naast elkaar (exterior / voor / na) → placeholder-blokken waar foto's ontbreken.
+- Feitentabel: Locatie & type · Jaar aankoop · Waardestijging · Rendement per jaar
+- Bestaande inleidende tekst behouden
+- Placeholder-button "Lees meer →" (geen handler/link).
+
+Onderaan nieuwe sectie:
+- Titel: "BEZOEK EEN LOCATIE"
+- Tekst: "Wil je de Windmolen een keer ervaren, of een rondje op het park om de bungalows te bekijken — voor én na renovatie? Dat kan. Eerste maandag van de maand of op afspraak."
+- Placeholder-button "Plan een bezoek →".
+
+---
+
+## 8. /investments
+Niet aangeraakt.
 
 ---
 
 ## Technische details
 
-- Tailwind v4: tokens in `@theme inline` blok blijven, alleen waarden updaten. `--background` etc. blijven CSS-variabelen, dus `bg-background`/`text-foreground` utilities switchen automatisch mee — geen JSX-refactor nodig op die plekken.
-- Voor secties die hard-coded `bg-surface/40` of `bg-background/60` gebruiken in `index.tsx`: vervangen door `.section-white` / `.section-light` wrappers of `bg-[#f5f7fa]` — geen layout-wijziging.
-- Poppins via `<link rel="preconnect">` + `<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,400&display=swap">` in `__root.tsx` head — nooit via `@import` in CSS (Lightning CSS faalt op remote imports).
-- Geen `tailwind.config.js` aanmaken — alle tokens blijven in `src/styles.css`.
+- Alleen content/JSX-aanpassingen in: `src/routes/index.tsx`, `src/routes/fondsen.lacuna.tsx`, `src/routes/fondsen.lama.tsx`, `src/routes/over-ons.tsx`, `src/routes/cases.tsx`.
+- FAQ gebruikt bestaande `@/components/ui/accordion` (Radix). Geen nieuwe dependencies.
+- Alle nieuwe strings via `t("NL", "EN")` uit `useLanguage()` (consistent met de rest van de codebase).
+- Placeholder-buttons: `<button type="button" className="btn-primary opacity-80 cursor-not-allowed">…</button>` of een variant die visueel "placeholder" suggereert zonder design te wijzigen. Geen `data-tf-popup` attributen.
+- Image placeholders: semantisch `<div role="img" aria-label="…">` met label-text; geen externe URLs.
+- Vliegwiel: SVG-cirkel + absoluut gepositioneerde nodes (desktop) en flex-kolom (mobile) — vanille Tailwind, geen lib.
+- Geen wijzigingen aan `styles.css`, routes, header/footer, navigatie of design tokens.

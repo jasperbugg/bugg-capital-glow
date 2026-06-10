@@ -1,8 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { WhitepaperModal } from "@/components/WhitepaperModal";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/fondsen/lama")({
   component: LamaPage,
@@ -12,7 +16,7 @@ export const Route = createFileRoute("/fondsen/lama")({
       {
         name: "description",
         content:
-          "Lama Fund — premium groepsverblijven met freehold eigendom. 14%+ target, pilot fase, €2M gecommitteerd.",
+          "Lama Fund — premium groepsverblijven met freehold eigendom. 14%+ target, pilot fase, €2M gecommitteerd. Built to compound.",
       },
     ],
   }),
@@ -31,47 +35,68 @@ function SpecTable({ rows }: { rows: { k: string; v: string }[] }) {
   );
 }
 
-function Pipeline({ steps, footer }: { steps: { label: string; pct: number }[]; footer?: string }) {
+function ImagePlaceholder({ label }: { label: string }) {
   return (
-    <div className="space-y-4">
-      {steps.map((s, i) => (
-        <div key={i}>
-          <div className="flex items-baseline justify-between text-sm">
-            <span className="text-muted-foreground">{s.label}</span>
-            <span className="text-xs text-muted-foreground">{s.pct}%</span>
-          </div>
-          <div className="mt-2 h-[3px] w-full bg-white/10 overflow-hidden">
-            <div className="h-full bg-primary transition-all duration-700" style={{ width: `${s.pct}%` }} />
-          </div>
-        </div>
-      ))}
-      {footer && <div className="pt-3 text-sm border-t border-border text-foreground">{footer}</div>}
+    <div
+      role="img"
+      aria-label={label}
+      className="aspect-[4/3] bg-[var(--surface)] border border-border flex items-center justify-center text-[10px] uppercase tracking-widest text-muted-foreground px-3 text-center"
+    >
+      {label}
     </div>
   );
 }
 
 function LamaPage() {
   const { t } = useLanguage();
-  const [modalOpen, setModalOpen] = useState(false);
 
   const cases = [
     {
+      title: "The Windmill",
       meta: t("Freehold · Belgisch Limburg · 2025", "Freehold · Belgian Limburg · 2025"),
-      title: t("The Windmill: van leegstand naar €60K NOI", "The Windmill: from vacancy to €60K NOI"),
       body: t(
         "Een verlaten windmolen in Belgisch Limburg. Uniek karakter, 8+ slaapkamers. Transformatie van woning naar premium groepsverblijf met ADR boven €800/nacht.",
         "An abandoned windmill in Belgian Limburg. Unique character, 8+ bedrooms. Transformed from residential property into a premium group stay with ADR above €800/night.",
       ),
-      image: null,
     },
     {
+      title: "Villa Grimbia",
       meta: t("Freehold · Belgisch Limburg · 2025", "Freehold · Belgian Limburg · 2025"),
-      title: t("Villa Grimbia: 18 pax, premium verhuur", "Villa Grimbia: 18 pax, premium rental"),
       body: t(
         "Grote villa gekocht op woningwaarde. Als groepsverblijf voor 18 gasten loopt de ADR op naar €900+/nacht. Cross-border arbitrage: Belgische aankoopprijs, Nederlandse betalingsbereidheid.",
         "Large villa acquired at residential value. As a group stay for 18 guests, ADR reaches €900+/night. Cross-border arbitrage: Belgian acquisition price, Dutch willingness to pay.",
       ),
-      image: "https://cdn-cms.bookingexperts.com/media/3743/31/optimized.jpg",
+    },
+  ];
+
+  const faq = [
+    {
+      q: t("Hoe verschilt freehold van leasehold binnen BUGG?", "How does freehold differ from leasehold within BUGG?"),
+      a: t(
+        "Bij Lama (freehold) verwerft het fonds het vastgoed in volledige eigendom — grond én opstal. Dat geeft onderpand, herfinancierbaarheid en directe waardegroei. Lacuna werkt met leasehold binnen domains.",
+        "With Lama (freehold) the fund acquires real estate in full ownership — land and building. That provides collateral, refinanceability and direct value growth. Lacuna operates with leasehold inside domains.",
+      ),
+    },
+    {
+      q: t("Waarom groepsverblijven en niet reguliere short-stay?", "Why group stays and not regular short-stay?"),
+      a: t(
+        "Groepsverblijven (15–20 pax) worden door de markt gewaardeerd als woning, maar genereren als short-stay experience een veelvoud. Daar zit de structurele arbitrage.",
+        "Group stays (15–20 pax) are valued as homes by the market, but generate a multiple as short-stay experiences. That is the structural arbitrage.",
+      ),
+    },
+    {
+      q: t("Hoe werkt het compounding-model in Lama?", "How does the compounding model work in Lama?"),
+      a: t(
+        "Cashflow uit exploitatie wordt herinvesteerd in nieuwe acquisities. Waardestijging van het bestaande vastgoed verhoogt onderpandwaarde en financieringscapaciteit. Het fonds groeit op zichzelf.",
+        "Operating cashflow is reinvested into new acquisitions. Appreciation of existing properties increases collateral value and financing capacity. The fund grows on itself.",
+      ),
+    },
+    {
+      q: t("Wat is de lockup en deelnamedrempel?", "What is the lockup and minimum participation?"),
+      a: t(
+        "Lockup van 9 jaar, minimum €100.000. Uitsluitend voor gekwalificeerde beleggers (Wft/FSMA).",
+        "9-year lockup, minimum €100,000. Available only to qualified investors (Wft/FSMA).",
+      ),
     },
   ];
 
@@ -100,15 +125,15 @@ function LamaPage() {
             )}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <button data-tf-popup="YOUR_TYPEFORM_ID" className="btn-primary">
+            <button type="button" className="btn-primary opacity-90 cursor-not-allowed">
               {t("Documentatie aanvragen", "Request documentation")} <ArrowRight size={16} />
             </button>
-            <button data-tf-popup="YOUR_TYPEFORM_ID_2" className="btn-ghost">{t("Gesprek inplannen", "Schedule a call")}</button>
+            <Link to="/contact" className="btn-ghost">{t("Contact opnemen", "Get in touch")}</Link>
           </div>
         </div>
       </section>
 
-      {/* SPECS + PIPELINE */}
+      {/* SPECS */}
       <section className="border-b border-border">
         <div className="container mx-auto px-6 py-24 grid lg:grid-cols-2 gap-10">
           <div className="panel p-8">
@@ -129,51 +154,47 @@ function LamaPage() {
               ]}
             />
           </div>
-          <div className="panel p-8">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-              Pipeline
+          <div className="panel p-8 flex flex-col justify-between">
+            <div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
+                {t("Filosofie", "Philosophy")}
+              </div>
+              <p className="text-foreground leading-relaxed">
+                {t(
+                  "Onderbenut, complex of moeilijk verhandelbaar vastgoed — scherp gekocht, professioneel herontwikkeld, premium verhuurd.",
+                  "Underused, complex or hard-to-sell real estate — sharply acquired, professionally redeveloped, premium rented.",
+                )}
+              </p>
             </div>
-            <Pipeline
-              steps={[
-                { label: t("2026: 3 units in uitvoering", "2026: 3 units in progress"), pct: 15 },
-                { label: t("2027+: 3–4 units per jaar", "2027+: 3–4 units per year"), pct: 35 },
-              ]}
-              footer={t("→ Target: 20 assets × gem. €1,25M", "→ Target: 20 assets × avg. €1.25M")}
-            />
+            <p className="mt-6 text-sm font-semibold text-primary">Built to compound.</p>
           </div>
         </div>
       </section>
 
-      {/* CASES */}
+      {/* IN ONTWIKKELING */}
       <section className="border-b border-border">
         <div className="container mx-auto px-6 py-24">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
-              <div className="eyebrow">{t("Portefeuille", "Portfolio")}</div>
+              <div className="eyebrow">{t("In ontwikkeling", "In development")}</div>
               <h2 className="mt-6 text-4xl md:text-5xl font-semibold">
-                {t(<>De panden.<br /><span className="italic-accent">De resultaten.</span></>, <>The properties.<br /><span className="italic-accent">The results.</span></>)}
+                {t(<>De panden.<br /><span className="italic-accent">In wording.</span></>, <>The properties.<br /><span className="italic-accent">Taking shape.</span></>)}
               </h2>
             </div>
             <p className="text-muted-foreground self-end leading-relaxed">
-              {t("Een selectie uit het Lama portfolio.", "A selection from the Lama portfolio.")}
+              {t("Een eerste blik op het Lama portfolio. Foto's volgen na oplevering.", "A first look at the Lama portfolio. Photos to follow upon delivery.")}
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {cases.map((c) => (
-              <div key={c.title} className="panel grid md:grid-cols-5 overflow-hidden">
-                <div className="md:col-span-2 bg-secondary aspect-[4/3] md:aspect-auto overflow-hidden">
-                  {c.image ? (
-                    <img src={c.image} alt={c.title} className="w-full h-full object-cover" loading="lazy" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-7xl">🏚️</div>
-                  )}
-                </div>
-                <div className="md:col-span-3 p-8 md:p-10 flex flex-col">
+              <div key={c.title} className="panel p-6 md:p-8">
+                <ImagePlaceholder label={t("Locatie in ontwikkeling — meer info volgt", "Location in development — more info to follow")} />
+                <div className="mt-6">
                   <div className="text-xs uppercase tracking-widest text-primary">Lama Fund</div>
                   <div className="text-xs text-muted-foreground mt-1">{c.meta}</div>
-                  <h3 className="mt-4 text-2xl md:text-3xl font-semibold leading-tight">{c.title}</h3>
-                  <p className="mt-4 text-muted-foreground leading-relaxed flex-1">{c.body}</p>
+                  <h3 className="mt-3 text-2xl font-semibold">{c.title}</h3>
+                  <p className="mt-3 text-muted-foreground leading-relaxed">{c.body}</p>
                 </div>
               </div>
             ))}
@@ -181,33 +202,89 @@ function LamaPage() {
         </div>
       </section>
 
-      {/* DATAROOM CTA */}
-      <section>
-        <div className="container mx-auto px-6 py-28 grid md:grid-cols-2 gap-12 items-center">
+      {/* PIPELINE */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="eyebrow">Dataroom</div>
+            <div className="eyebrow">Pipeline</div>
             <h2 className="mt-6 text-4xl md:text-5xl font-semibold">
-              {t(<>Dieper in<br /><span className="italic-accent">de cijfers?</span></>, <>Deeper into<br /><span className="italic-accent">the numbers?</span></>)}
+              {t(<>Meer objecten<br /><span className="italic-accent">in de pijplijn.</span></>, <>More assets<br /><span className="italic-accent">in the pipeline.</span></>)}
             </h2>
           </div>
           <div>
             <p className="text-muted-foreground leading-relaxed">
               {t(
-                "Volledig portfolio, financiële modellen en due diligence documentatie — beschikbaar via onze dataroom na een korte kennismaking.",
-                "Full portfolio, financial models and due diligence documentation — available via our dataroom after a short introduction.",
+                "We hebben meerdere objecten in de pijplijn. Interesse? Neem contact op voor de meest actuele stand van zaken.",
+                "We have multiple assets in the pipeline. Interested? Get in touch for the latest update.",
               )}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <button data-tf-popup="YOUR_TYPEFORM_ID" className="btn-primary">
-                {t("Toegang aanvragen", "Request access")} <ArrowRight size={16} />
-              </button>
-              <button data-tf-popup="YOUR_TYPEFORM_ID_2" className="btn-ghost">{t("Gesprek plannen", "Schedule a call")}</button>
+              <Link to="/contact" className="btn-primary">
+                {t("Contact opnemen →", "Get in touch →")}
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <WhitepaperModal open={modalOpen} onClose={() => setModalOpen(false)} title="Lama Fund" />
+      {/* FAQ */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-6 py-24 grid md:grid-cols-3 gap-12">
+          <div>
+            <div className="eyebrow">FAQ</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-semibold">
+              {t(<>Veelgestelde<br /><span className="italic-accent">vragen.</span></>, <>Frequently<br /><span className="italic-accent">asked.</span></>)}
+            </h2>
+          </div>
+          <div className="md:col-span-2">
+            <Accordion type="single" collapsible className="w-full">
+              {faq.map((item, i) => (
+                <AccordionItem key={i} value={`item-${i}`}>
+                  <AccordionTrigger className="text-left text-base font-semibold">{item.q}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">{item.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* BUILT TO COMPOUND */}
+      <section>
+        <div className="container mx-auto px-6 py-28 grid md:grid-cols-2 gap-12">
+          <div>
+            <div className="eyebrow">Lama Fund</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-semibold uppercase tracking-tight">
+              {t("Built to compound", "Built to compound")}
+            </h2>
+          </div>
+          <div className="text-muted-foreground leading-relaxed space-y-4">
+            <p>
+              {t(
+                "Lama investeert in groepsaccommodaties met verborgen potentieel — locaties die onderbenut, complex of moeilijk verhandelbaar zijn, en daardoor scherp geprijsd kunnen worden aangekocht.",
+                "Lama invests in group accommodations with hidden potential — locations that are underused, complex or hard to sell, and can therefore be acquired at sharp prices.",
+              )}
+            </p>
+            <p>
+              {t(
+                "Door herontwikkeling, optimalisatie en strategische positionering transformeren wij deze objecten naar hoogwaardige verblijfsaccommodaties. Het resultaat: waardestijging van het vastgoed in combinatie met groeiende cashflow.",
+                "Through redevelopment, optimisation and strategic positioning we transform these properties into high-end accommodations. The result: real estate appreciation combined with growing cashflow.",
+              )}
+            </p>
+            <p>
+              {t(
+                "Vermogen dat zichzelf blijft versterken door gebruik, tijd en optimalisatie.",
+                "Wealth that keeps compounding through use, time and optimisation.",
+              )}
+            </p>
+            <div className="pt-4 flex flex-wrap gap-3">
+              <Link to="/contact" className="btn-primary">
+                {t("Contact opnemen", "Get in touch")} <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

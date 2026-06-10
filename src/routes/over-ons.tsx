@@ -121,6 +121,49 @@ function OverOns() {
         </div>
       </section>
 
+      {/* ONZE VISIE */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 grid md:grid-cols-2 gap-12">
+          <div>
+            <div className="eyebrow">Onze visie</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+              Wij zien een markt die<br /><span className="italic-accent">anderen nog niet begrijpen.</span>
+            </h2>
+          </div>
+          <div className="space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              95% van de verhuurders in de Belgisch-Limburgse STR-markt is een particulier met één woning, zonder professionele tools, budgetten of distributie-expertise. Wij wel. Dat is onze structurele edge.
+            </p>
+            <p>
+              De NL-betalingsbereidheid trekt naar de Belgische markt — terwijl de aankoopprijzen in België nog altijd significant lager liggen dan in Nederland. Wij zijn vroeg.
+            </p>
+            <p className="text-sm font-semibold text-primary">Built to compound.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ONZE MISSIE */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 grid md:grid-cols-2 gap-12">
+          <div>
+            <div className="eyebrow">Onze missie</div>
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+              Lokaal verankerd.<br /><span className="italic-accent">Professioneel gebouwd.</span>
+            </h2>
+          </div>
+          <div className="space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              BUGG werkt met vaste lokale partners in het grensgebied — van notaris tot aannemer tot interieurteam. We stimuleren bewust de lokale economie en geloven dat professioneel vastgoedbeheer ook goed kan zijn voor de regio.
+            </p>
+            <p>
+              We maken beleggen in vastgoed toegankelijk en transparant voor de juiste investeerder.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
