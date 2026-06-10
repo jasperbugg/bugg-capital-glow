@@ -8,10 +8,10 @@ const TYPEFORM_CALL_ID = "YOUR_TYPEFORM_ID_2";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BUGG Capital — From Code to Capital" },
-      { name: "description", content: "Investment holding in het grensgebied NL–BE. Van platformbedrijven naar vastgoedfondsen. Built to compound." },
-      { property: "og:title", content: "BUGG Capital — From Code to Capital" },
-      { property: "og:description", content: "Van platformbedrijven naar vastgoedfondsen. Co-ownership in Belgisch short-stay vastgoed. Built to compound." },
+      { title: "BUGG Capital — Platform builders. Vastgoedfondsen." },
+      { name: "description", content: "Investment holding in het grensgebied NL–BE. Specialstays als operating platform, Lacuna en Lama als vastgoedfondsen. Built to compound." },
+      { property: "og:title", content: "BUGG Capital — Platform builders. Vastgoedfondsen." },
+      { property: "og:description", content: "Specialstays als operating platform, vastgoedfondsen als asset class. Co-ownership in Belgisch short-stay vastgoed. Built to compound." },
     ],
   }),
   component: Home,
