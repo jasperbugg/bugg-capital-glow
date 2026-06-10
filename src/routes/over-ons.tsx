@@ -20,12 +20,12 @@ const team = [
 ];
 
 const partners = [
-  { name: "Van Casimir", role: "Legal & Tax · Vastgoedrecht BE/NL", body: "Grensoverschrijdende structurering, fondsrecht en fiscaliteit NL–BE." },
-  { name: "Delta Notaris", role: "Notariaat · Belgisch Limburg", body: "Vaste notariële partner voor acquisities in het grensgebied." },
-  { name: "Baat", role: "Accounting · Fondsadministratie", body: "Fondsadministratie, rapportage en periodieke investor updates." },
-  { name: "BNP Paribas", role: "Banking · Structurering & financiering", body: "Bankpartner voor financieringsstructuren en hypotheken." },
-  { name: "Vlaamse Participatiemaatschappij", role: "Participatie & advies", body: "Betrokken als adviseur bij fondsstructurering in Belgisch Limburg." },
-  { name: "Specialstays", role: "Operating platform · Eigen ontwikkeling", body: "Het operating systeem dat BUGG zelf bouwde. 70% bezetting, 8.8 review." },
+  { name: "Bank", role: "Financiering & structurering", body: "Bankpartner voor hypotheken, financieringsstructuren en grensoverschrijdende cashmanagement." },
+  { name: "Notaris", role: "Notariaat · Grensgebied NL–BE", body: "Vaste notariële partner voor acquisities, akte-passering en zakelijke rechten in het grensgebied." },
+  { name: "Advocaat", role: "Legal & Tax · Vastgoedrecht BE/NL", body: "Grensoverschrijdende juridische structurering, fondsrecht en fiscaliteit NL–BE." },
+  { name: "Architect", role: "Ontwerp & vergunningen", body: "Architectuurpartner voor herontwikkeling, vergunningstrajecten en interieurstandaard." },
+  { name: "Accountant", role: "Fondsadministratie & rapportage", body: "Fondsadministratie, jaarrekeningen en periodieke investor updates." },
+  { name: "Operating Platform", role: "Specialstays · Eigen ontwikkeling", body: "Het operating systeem dat BUGG zelf bouwde. 70% bezetting, 8.8 review." },
 ];
 
 const edge = [
