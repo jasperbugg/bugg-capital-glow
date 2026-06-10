@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import buggLogoWhite from "@/assets/bugg-logo-white.png.asset.json";
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
