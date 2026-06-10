@@ -14,6 +14,7 @@ import { Route as OverOnsRouteImport } from './routes/over-ons'
 import { Route as InvestmentsRouteImport } from './routes/investments'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CasussenRouteImport } from './routes/casussen'
+import { Route as FondsenRouteRouteImport } from './routes/fondsen.route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FondsenIndexRouteImport } from './routes/fondsen.index'
 import { Route as FondsenLamaRouteImport } from './routes/fondsen.lama'
@@ -44,29 +45,35 @@ const CasussenRoute = CasussenRouteImport.update({
   path: '/casussen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FondsenRouteRoute = FondsenRouteRouteImport.update({
+  id: '/fondsen',
+  path: '/fondsen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FondsenIndexRoute = FondsenIndexRouteImport.update({
-  id: '/fondsen/',
-  path: '/fondsen/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => FondsenRouteRoute,
 } as any)
 const FondsenLamaRoute = FondsenLamaRouteImport.update({
   id: '/lama',
   path: '/lama',
-  getParentRoute: () => FondsenRoute,
+  getParentRoute: () => FondsenRouteRoute,
 } as any)
 const FondsenLacunaRoute = FondsenLacunaRouteImport.update({
   id: '/lacuna',
   path: '/lacuna',
-  getParentRoute: () => FondsenRoute,
+  getParentRoute: () => FondsenRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/fondsen': typeof FondsenRouteRouteWithChildren
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
   '/investments': typeof InvestmentsRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/fondsen': typeof FondsenRouteRouteWithChildren
   '/casussen': typeof CasussenRoute
   '/contact': typeof ContactRoute
   '/investments': typeof InvestmentsRoute
@@ -103,6 +111,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/fondsen'
     | '/casussen'
     | '/contact'
     | '/investments'
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/fondsen'
     | '/casussen'
     | '/contact'
     | '/investments'
@@ -137,12 +147,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FondsenRouteRoute: typeof FondsenRouteRouteWithChildren
   CasussenRoute: typeof CasussenRoute
   ContactRoute: typeof ContactRoute
   InvestmentsRoute: typeof InvestmentsRoute
   OverOnsRoute: typeof OverOnsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  FondsenIndexRoute: typeof FondsenIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -182,6 +192,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CasussenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fondsen': {
+      id: '/fondsen'
+      path: '/fondsen'
+      fullPath: '/fondsen'
+      preLoaderRoute: typeof FondsenRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -191,36 +208,52 @@ declare module '@tanstack/react-router' {
     }
     '/fondsen/': {
       id: '/fondsen/'
-      path: '/fondsen'
+      path: '/'
       fullPath: '/fondsen/'
       preLoaderRoute: typeof FondsenIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof FondsenRouteRoute
     }
     '/fondsen/lama': {
       id: '/fondsen/lama'
       path: '/lama'
       fullPath: '/fondsen/lama'
       preLoaderRoute: typeof FondsenLamaRouteImport
-      parentRoute: typeof FondsenRoute
+      parentRoute: typeof FondsenRouteRoute
     }
     '/fondsen/lacuna': {
       id: '/fondsen/lacuna'
       path: '/lacuna'
       fullPath: '/fondsen/lacuna'
       preLoaderRoute: typeof FondsenLacunaRouteImport
-      parentRoute: typeof FondsenRoute
+      parentRoute: typeof FondsenRouteRoute
     }
   }
 }
 
+interface FondsenRouteRouteChildren {
+  FondsenLacunaRoute: typeof FondsenLacunaRoute
+  FondsenLamaRoute: typeof FondsenLamaRoute
+  FondsenIndexRoute: typeof FondsenIndexRoute
+}
+
+const FondsenRouteRouteChildren: FondsenRouteRouteChildren = {
+  FondsenLacunaRoute: FondsenLacunaRoute,
+  FondsenLamaRoute: FondsenLamaRoute,
+  FondsenIndexRoute: FondsenIndexRoute,
+}
+
+const FondsenRouteRouteWithChildren = FondsenRouteRoute._addFileChildren(
+  FondsenRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FondsenRouteRoute: FondsenRouteRouteWithChildren,
   CasussenRoute: CasussenRoute,
   ContactRoute: ContactRoute,
   InvestmentsRoute: InvestmentsRoute,
   OverOnsRoute: OverOnsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  FondsenIndexRoute: FondsenIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
