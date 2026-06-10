@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { WhitepaperModal } from "@/components/WhitepaperModal";
+
+const TYPEFORM_DOC_ID = "YOUR_TYPEFORM_ID";
+const TYPEFORM_CALL_ID = "YOUR_TYPEFORM_ID_2";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,9 +19,6 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { t } = useLanguage();
-  const [modal, setModal] = useState<{ open: boolean; title?: string }>({ open: false });
-  const openModal = (title?: string) => setModal({ open: true, title });
-  const closeModal = () => setModal({ open: false });
 
   const kpis = [
     { value: "40+", label: t("Panden in portefeuille", "Properties in portfolio") },
