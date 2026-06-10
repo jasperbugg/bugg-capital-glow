@@ -145,6 +145,39 @@ function Home() {
         </div>
       </section>
 
+      {/* TRACK RECORD */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <div className="eyebrow">{t("Track record", "Track record")}</div>
+              <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+                {t(
+                  <>From code<br /><span className="italic-accent">to capital.</span></>,
+                  <>From code<br /><span className="italic-accent">to capital.</span></>,
+                )}
+              </h2>
+            </div>
+            <p className="text-muted-foreground self-end leading-relaxed">
+              {t(
+                "Sinds 2012 bouwen wij platforms. Vandaag bouwen wij vermogen.",
+                "Building platforms since 2012. Building wealth today.",
+              )}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border">
+            {trackRecord.map((s) => (
+              <div key={s.year} className="bg-background p-6">
+                <div className="text-xs font-mono text-primary tracking-widest">{s.year}</div>
+                <div className="mt-2 text-lg font-semibold">{s.name}</div>
+                <div className="mt-1 text-sm text-muted-foreground">{s.tag}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FASES */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24">
