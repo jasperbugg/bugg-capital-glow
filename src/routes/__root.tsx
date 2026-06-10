@@ -83,9 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen, eigen capital erin. Sinds 2012." },
       { name: "author", content: "BUGG Capital" },
       { property: "og:title", content: "BUGG Capital — Co-ownership in Belgisch short-stay vastgoed" },
-      { property: "og:description", content: "Lacuna & Lama: twee co-ownership fondsen in Belgisch short-stay vastgoed. Doe mee. Investeer samen met de founders." },
+      { property: "og:description", content: "Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen, eigen capital erin. Sinds 2012." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "BUGG Capital — Co-ownership in Belgisch short-stay vastgoed" },
+      { name: "twitter:description", content: "Investment holding actief in het grensgebied NL–BE. Eigen platform, eigen fondsen, eigen capital erin. Sinds 2012." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/df06bc8e-bc42-4990-af98-d2959ad0a816/id-preview-4297bbb6--6a2b1fc9-b256-4e87-978c-db4410109866.lovable.app-1781068629458.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/df06bc8e-bc42-4990-af98-d2959ad0a816/id-preview-4297bbb6--6a2b1fc9-b256-4e87-978c-db4410109866.lovable.app-1781068629458.png" },
     ],
     links: [
       {
