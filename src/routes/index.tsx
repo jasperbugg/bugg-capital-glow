@@ -60,7 +60,7 @@ function Home() {
               <Link to="/fondsen" className="btn-primary">
                 {t("Bekijk de fondsen", "View our funds")} <ArrowRight size={16} />
               </Link>
-              <button onClick={() => openModal(t("Whitepaper", "Whitepaper"))} className="btn-ghost">
+              <button data-tf-popup={TYPEFORM_DOC_ID} className="btn-ghost">
                 {t("Download whitepaper", "Download whitepaper")}
               </button>
             </div>
