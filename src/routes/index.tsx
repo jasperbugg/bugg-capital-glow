@@ -206,7 +206,7 @@ function Home() {
                     {f.cta1} →
                   </Link>
                   <button
-                    onClick={() => openModal(f.factsheet)}
+                    data-tf-popup={TYPEFORM_DOC_ID}
                     className="btn-ghost !py-2.5 !px-4 text-xs"
                   >
                     {t("Download factsheet", "Download factsheet")}
